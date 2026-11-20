@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>学習フィード</title>
 <meta name="description" content="スクロールするだけで一問一答が進む、スマホ向け学習フィード。アカウント不要・完全無料。">
-<link rel="stylesheet" href="style.css?v=20261116-2">
+<link rel="stylesheet" href="style.css?v=20261120-1">
 <script>
   // 描画前にアプリの高さを実測で固定する（iOSアプリ内ブラウザ対策）
   (function () {
@@ -37,6 +37,7 @@
     <span class="badge">解いた <strong id="statDone">0</strong></span>
     <span class="badge">残り <strong id="statLeft">0</strong></span>
     <span class="badge">苦手マーク <strong id="statWeak">0</strong></span>
+    <button class="badge sw-badge is-paused" id="swBtn" type="button" title="ストップウォッチを開始／一時停止"><span id="swLabel">▶</span> 時間 <strong id="statTime">0:00</strong></button>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
@@ -101,6 +102,13 @@
 
     <p class="setting-label">復習モード</p>
     <button type="button" class="btn-ghost btn-wide" id="weakModeBtn">苦手だけ復習：オフ</button>
+    <button type="button" class="btn-ghost btn-wide" id="customModeBtn">自作だけ解く：オフ</button>
+
+    <p class="setting-label">自作問題</p>
+    <button type="button" class="btn-ghost btn-wide" id="customBtn">自作問題の登録・管理（<span id="customCount">0</span>件）</button>
+
+    <p class="setting-label">学習時間の記録</p>
+    <div id="studyLogList" class="study-log"></div>
 
     <p class="modal-note">※学習記録はこの端末（ブラウザ）内のみに保存されます。履歴やキャッシュを削除するとリセットされます。</p>
 
@@ -111,11 +119,40 @@
   </div>
 </div>
 
+<!-- 自作問題モーダル -->
+<div class="modal-overlay" id="customOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">自作問題</h2>
+    <p class="modal-text">テストや模試で間違えた問題を自分で登録して、通常のフィードに混ぜて復習できます。登録した問題はこの端末内にだけ保存されます。</p>
+    <p class="setting-label">教科</p>
+    <div class="seg" id="customSubjectSeg">
+      <button type="button" data-subject="english" class="is-active">英単語</button>
+      <button type="button" data-subject="social">社会</button>
+    </div>
+    <label class="field-label" for="customQuestion">問題</label>
+    <input type="text" class="field-input" id="customQuestion" placeholder="例：apple" maxlength="200">
+    <label class="field-label" for="customAnswer">答え</label>
+    <input type="text" class="field-input" id="customAnswer" placeholder="例：りんご" maxlength="200">
+    <label class="field-label" for="customExplain">解説（任意）</label>
+    <textarea class="field-input field-textarea" id="customExplain" placeholder="例：an apple a day keeps the doctor away.（なくてもOK）" maxlength="500"></textarea>
+    <p class="field-error" id="customError" hidden>問題と答えを両方入れてください。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="customAddBtn">追加する</button>
+    </div>
+    <p class="setting-label">登録した問題（<span id="customListCount">0</span>件）</p>
+    <div id="customList" class="custom-list"></div>
+    <p class="modal-note">追加した問題はフィードに混ぜて出題されます。解いている途中の場合は、次のセッション（タブ切替・もう一度）から出ます。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="customClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <!-- 記録リセット確認 -->
 <div class="modal-overlay" id="confirmOverlay" hidden>
   <div class="modal">
     <h2 class="modal-title">記録を消しますか？</h2>
-    <p class="modal-text">学習履歴・自己判定・苦手マークがすべて消えます。元に戻せません。</p>
+    <p class="modal-text">学習履歴・自己判定・苦手マーク・自作問題がすべて消えます。元に戻せません。</p>
     <div class="modal-actions">
       <button type="button" class="btn-ghost" id="confirmCancel">キャンセル</button>
       <button type="button" class="btn-danger" id="confirmReset">消す</button>
@@ -123,6 +160,6 @@
   </div>
 </div>
 
-<script src="script.js?v=20261116-3"></script>
+<script src="script.js?v=20261120-1"></script>
 </body>
 </html>

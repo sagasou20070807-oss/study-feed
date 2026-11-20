@@ -115,6 +115,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .progress {
   flex-shrink: 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 10px 16px 0;
 }
@@ -127,6 +128,11 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   color: var(--muted);
 }
 .badge strong { color: var(--ink); font-size: 15px; }
+.sw-badge { font: inherit; cursor: pointer; }
+.sw-badge.is-paused { opacity: .55; }
+.study-log { font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.study-log-row { display: flex; justify-content: space-between; }
+.study-log-total { color: var(--ink); font-weight: 600; }
 .progress-bar {
   flex-shrink: 0;
   height: 4px;
@@ -359,3 +365,41 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .seg button.is-active { background: var(--ink); color: #fff; }
 
 .feed-message { padding: 32px 8px; text-align: center; color: var(--muted); line-height: 1.8; }
+
+/* ===== 自作問題（2026-11-20 キュー#2） ===== */
+.field-label { display: block; margin: 14px 0 6px; font-size: 14px; font-weight: 700; }
+.field-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 15px;
+  background: #fff;
+}
+.field-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.field-textarea { min-height: 72px; resize: vertical; }
+.field-error { margin: 8px 0 0; font-size: 13px; color: var(--bad); font-weight: 700; }
+.subject-custom { background: #f3e8ff; color: #7e22ce; }
+.custom-list { display: flex; flex-direction: column; gap: 8px; }
+.custom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.custom-row .custom-q { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.custom-del {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 2px solid var(--bad);
+  color: var(--bad);
+  font-weight: 700;
+  font-size: 13px;
+  background: #fdecec;
+}
+.custom-empty { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }

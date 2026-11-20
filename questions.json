@@ -278,5 +278,145 @@
     "id": "soc-020",
     "question": "日本の領土で、最も北にある島（日本最北端の島）は？",
     "subject": "social"
+  },
+  {
+    "answer": "遊ぶ・（スポーツを）する",
+    "explanation": "I play soccer after school.（私は放課後サッカーをします）スポーツの前では「する」の意味になる。楽器のときは play the piano のように the が付く",
+    "id": "eng-021",
+    "question": "play",
+    "subject": "english"
+  },
+  {
+    "answer": "〜が好きである",
+    "explanation": "I like music.（私は音楽が好きです）「好き」の基本の単語。like to 〜 で「〜するのが好き」にもなる",
+    "id": "eng-022",
+    "question": "like",
+    "subject": "english"
+  },
+  {
+    "answer": "〜がほしい・〜したい",
+    "explanation": "I want a new bike.（私は新しい自転車がほしいです）want to 〜 で「〜したい」という意味になる",
+    "id": "eng-023",
+    "question": "want",
+    "subject": "english"
+  },
+  {
+    "answer": "持っている・飼っている",
+    "explanation": "I have a dog.（私は犬を飼っています）「持っている」が基本。家族やペットにも使う",
+    "id": "eng-024",
+    "question": "have",
+    "subject": "english"
+  },
+  {
+    "answer": "取る・（乗り物に）乗る",
+    "explanation": "I take the bus to school.（私はバスで学校へ行きます）乗り物に乗るときに使う。take a picture で「写真を撮る」",
+    "id": "eng-025",
+    "question": "take",
+    "subject": "english"
+  },
+  {
+    "answer": "手に入れる・もらう",
+    "explanation": "I get a present.（私はプレゼントをもらいます）「手に入れる」が基本。get up で「起きる」もよく出る",
+    "id": "eng-026",
+    "question": "get",
+    "subject": "english"
+  },
+  {
+    "answer": "見える・会う",
+    "explanation": "I see a bird in the sky.（空に鳥が見えます）自然に目に入るのが see。じっと見るのは watch（バッチ01）",
+    "id": "eng-027",
+    "question": "see",
+    "subject": "english"
+  },
+  {
+    "answer": "（目を向けて）見る",
+    "explanation": "Look at the picture.（その絵を見てください）目を向けて見ること。at と一緒に使う。listen と同じ形",
+    "id": "eng-028",
+    "question": "look",
+    "subject": "english"
+  },
+  {
+    "answer": "知っている",
+    "explanation": "I know his name.（私は彼の名前を知っています）k は発音しない（「ノウ」と読む）",
+    "id": "eng-029",
+    "question": "know",
+    "subject": "english"
+  },
+  {
+    "answer": "思う・考える",
+    "explanation": "I think so.（私はそう思います）「〜だと思う」と言うときの基本形",
+    "id": "eng-030",
+    "question": "think",
+    "subject": "english"
+  },
+  {
+    "answer": "買う",
+    "explanation": "I buy a notebook.（私はノートを買います）過去形は bought（ボート）で、形が大きく変わる",
+    "id": "eng-031",
+    "question": "buy",
+    "subject": "english"
+  },
+  {
+    "answer": "あげる・与える",
+    "explanation": "Please give me water.（水をください）give 人 もの の形でよく使う",
+    "id": "eng-032",
+    "question": "give",
+    "subject": "english"
+  },
+  {
+    "answer": "伝える・話す",
+    "explanation": "Tell me the truth.（本当のことを教えてください）tell 人 で「人に伝える」。speak（話す）とは使い方が違う",
+    "id": "eng-033",
+    "question": "tell",
+    "subject": "english"
+  },
+  {
+    "answer": "たずねる・頼む",
+    "explanation": "Ask the teacher.（先生に聞いてください）質問するときの単語。ask 人 で「人にたずねる」",
+    "id": "eng-034",
+    "question": "ask",
+    "subject": "english"
+  },
+  {
+    "answer": "答える",
+    "explanation": "Answer the question.（その質問に答えてください）名詞でも同じ answer（答え）を使う",
+    "id": "eng-035",
+    "question": "answer",
+    "subject": "english"
+  },
+  {
+    "answer": "開ける・開く",
+    "explanation": "Open the window, please.（窓を開けてください）close（閉める）と反対の動き",
+    "id": "eng-036",
+    "question": "open",
+    "subject": "english"
+  },
+  {
+    "answer": "閉める・閉じる",
+    "explanation": "Close the door, please.（ドアを閉めてください）open（開ける）と反対の動き",
+    "id": "eng-037",
+    "question": "close",
+    "subject": "english"
+  },
+  {
+    "answer": "始める・始まる",
+    "explanation": "The class begins at nine.（授業は9時に始まります）過去形は began（ビギャン）",
+    "id": "eng-038",
+    "question": "begin",
+    "subject": "english"
+  },
+  {
+    "answer": "終える・終わる",
+    "explanation": "I finish my homework.（私は宿題を終えます）begin（始まる）と反対の動き",
+    "id": "eng-039",
+    "question": "finish",
+    "subject": "english"
+  },
+  {
+    "answer": "待つ",
+    "explanation": "Wait a minute, please.（少し待ってください）wait for 〜 で「〜を待つ」になる",
+    "id": "eng-040",
+    "question": "wait",
+    "subject": "english"
   }
 ]
