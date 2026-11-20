@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>学習フィード</title>
+<meta name="description" content="スクロールするだけで一問一答が進む、スマホ向け学習フィード。アカウント不要・完全無料。">
+<link rel="stylesheet" href="style.css?v=20261120-1">
+<script>
+  // 描画前にアプリの高さを実測で固定する（iOSアプリ内ブラウザ対策）
+  (function () {
+    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    if (h) document.documentElement.style.setProperty('--app-height', h + 'px');
+  })();
+</script>
+</head>
+<body>
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="app-title">学習フィード</div>
+    <button type="button" class="settings-btn" id="settingsBtn" aria-label="設定">⚙️ 設定</button>
+  </header>
+
+  <div class="notice-bar" id="noticeBar" hidden>
+    <p>※学習記録はこの端末（ブラウザ）内のみに保存されます。履歴やキャッシュを削除するとリセットされます。</p>
+    <button type="button" class="notice-close" id="noticeClose" aria-label="閉じる">×</button>
+  </div>
+
+  <nav class="tabs" id="tabs" aria-label="教科フィルター">
+    <button type="button" class="tab is-active" data-filter="all">すべて</button>
+    <button type="button" class="tab" data-filter="english">英単語</button>
+    <button type="button" class="tab" data-filter="social">社会</button>
+  </nav>
+
+  <div class="progress">
+    <span class="badge">解いた <strong id="statDone">0</strong></span>
+    <span class="badge">残り <strong id="statLeft">0</strong></span>
+    <span class="badge">苦手マーク <strong id="statWeak">0</strong></span>
+    <button class="badge sw-badge is-paused" id="swBtn" type="button" title="ストップウォッチを開始／一時停止"><span id="swLabel">▶</span> 時間 <strong id="statTime">0:00</strong></button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <main class="feed" id="feed" aria-label="問題フィード"></main>
+
+  <footer class="global-foot" id="globalFoot">
+    <p class="foot-label" id="footLabel">カードをタップすると答えが見られるよ</p>
+    <div class="judge-row" id="judgeRow" hidden>
+      <button type="button" class="judge-btn judge-know" data-judge="know">覚えてた</button>
+      <button type="button" class="judge-btn judge-fuzzy" data-judge="fuzzy">あいまい</button>
+      <button type="button" class="judge-btn judge-bad" data-judge="bad">ダメだった</button>
+    </div>
+  </footer>
+</div>
+
+<!-- 解説シート -->
+<div class="sheet-overlay" id="sheetOverlay" hidden></div>
+<section class="sheet" id="sheet" hidden aria-label="解説">
+  <div class="sheet-handle"></div>
+  <h2 class="sheet-title">解説</h2>
+  <p class="sheet-answer" id="sheetAnswer"></p>
+  <p class="sheet-body" id="sheetBody"></p>
+  <button type="button" class="sheet-close" id="sheetClose">閉じる</button>
+</section>
+
+<!-- 10問ごとの小結果 -->
+<div class="modal-overlay" id="chunkOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title" id="chunkTitle">10問おつかれさま</h2>
+    <p class="modal-text" id="chunkText"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="chunkContinue">続ける</button>
+      <button type="button" class="btn-ghost" id="chunkFinish">結果を見る</button>
+    </div>
+  </div>
+</div>
+
+<!-- 結果画面 -->
+<div class="modal-overlay" id="resultsOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">結果</h2>
+    <p class="modal-text" id="resultsText"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="resultsAgain">もう一度</button>
+      <button type="button" class="btn-ghost" id="resultsWeak">苦手だけ復習</button>
+    </div>
+    <p class="modal-note">※学習記録はこの端末（ブラウザ）内のみに保存されます。履歴やキャッシュを削除するとリセットされます。</p>
+  </div>
+</div>
+
+<!-- 設定モーダル -->
+<div class="modal-overlay" id="settingsOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">設定</h2>
+
+    <p class="setting-label">再出題の間隔</p>
+    <div class="seg" id="intervalSeg">
+      <button type="button" data-interval="fast">早め</button>
+      <button type="button" data-interval="normal">ふつう</button>
+      <button type="button" data-interval="slow">遅め</button>
+    </div>
+
+    <p class="setting-label">復習モード</p>
+    <button type="button" class="btn-ghost btn-wide" id="weakModeBtn">苦手だけ復習：オフ</button>
+    <button type="button" class="btn-ghost btn-wide" id="customModeBtn">自作だけ解く：オフ</button>
+
+    <p class="setting-label">自作問題</p>
+    <button type="button" class="btn-ghost btn-wide" id="customBtn">自作問題の登録・管理（<span id="customCount">0</span>件）</button>
+
+    <p class="setting-label">学習時間の記録</p>
+    <div id="studyLogList" class="study-log"></div>
+
+    <p class="modal-note">※学習記録はこの端末（ブラウザ）内のみに保存されます。履歴やキャッシュを削除するとリセットされます。</p>
+
+    <button type="button" class="btn-danger" id="resetBtn">この端末の記録をすべて消す</button>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="settingsClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- 自作問題モーダル -->
+<div class="modal-overlay" id="customOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">自作問題</h2>
+    <p class="modal-text">テストや模試で間違えた問題を自分で登録して、通常のフィードに混ぜて復習できます。登録した問題はこの端末内にだけ保存されます。</p>
+    <p class="setting-label">教科</p>
+    <div class="seg" id="customSubjectSeg">
+      <button type="button" data-subject="english" class="is-active">英単語</button>
+      <button type="button" data-subject="social">社会</button>
+    </div>
+    <label class="field-label" for="customQuestion">問題</label>
+    <input type="text" class="field-input" id="customQuestion" placeholder="例：apple" maxlength="200">
+    <label class="field-label" for="customAnswer">答え</label>
+    <input type="text" class="field-input" id="customAnswer" placeholder="例：りんご" maxlength="200">
+    <label class="field-label" for="customExplain">解説（任意）</label>
+    <textarea class="field-input field-textarea" id="customExplain" placeholder="例：an apple a day keeps the doctor away.（なくてもOK）" maxlength="500"></textarea>
+    <p class="field-error" id="customError" hidden>問題と答えを両方入れてください。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="customAddBtn">追加する</button>
+    </div>
+    <p class="setting-label">登録した問題（<span id="customListCount">0</span>件）</p>
+    <div id="customList" class="custom-list"></div>
+    <p class="modal-note">追加した問題はフィードに混ぜて出題されます。解いている途中の場合は、次のセッション（タブ切替・もう一度）から出ます。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="customClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- 記録リセット確認 -->
+<div class="modal-overlay" id="confirmOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">記録を消しますか？</h2>
+    <p class="modal-text">学習履歴・自己判定・苦手マーク・自作問題がすべて消えます。元に戻せません。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-ghost" id="confirmCancel">キャンセル</button>
+      <button type="button" class="btn-danger" id="confirmReset">消す</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js?v=20261120-1"></script>
+</body>
+</html>
