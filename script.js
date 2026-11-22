@@ -65,9 +65,16 @@ function ga(eventName, params) {
 
 /* ===== アプリの高さを実測で固定（iOSアプリ内ブラウザ対策） ===== */
 const feedEl = document.getElementById('feed');
+let lastFitWidth = 0;
 function fitAppHeight() {
   const h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-  if (h) document.documentElement.style.setProperty('--app-height', h + 'px');
+  if (!h) return;
+  // 幅が変わったとき（回転・ウィンドウのリサイズ）だけ高さを決め直す。
+  // URLバーの出入りなど「高さだけ」の変化で組み直すと、スナップ位置が全部ずれて
+  // 問題が飛んだり、だんだん画面に収まらなくなる不具合の原因になる（2026-11-22）
+  if (lastFitWidth && window.innerWidth === lastFitWidth) return;
+  lastFitWidth = window.innerWidth;
+  document.documentElement.style.setProperty('--app-height', h + 'px');
 }
 function realignFeed() {
   const slide = feedEl.children[currentIdx];
@@ -357,8 +364,13 @@ feedEl.addEventListener('pointermove', ev => { if (ev.buttons) lastNavIntentAt =
 function onCurrentChange(idx) {
   if (sessionEnded) return;
   if (idx === currentIdx) { syncFooter(); return; }
-  // 再描画・位置合わせ直後は現在位置だけ取り込み、並び替えはしない
-  if (suppressNav) { currentIdx = idx; syncFooter(); return; }
+  // 再描画・位置合わせ直後の報告は、そのまま現在位置として取り込まない（問題が飛ぶ原因になる）。
+  // スワイプの勢いが続いているときだけ取り込み、それ以外は現在の問題へ整列し直す
+  if (suppressNav) {
+    if (Date.now() - lastNavIntentAt <= 1000) currentIdx = idx; else realignFeed();
+    syncFooter();
+    return;
+  }
   // スクロールが落ち着いてから確定させる（通過しただけのスライドで並び替えない）
   if (navTimer) clearTimeout(navTimer);
   navTimer = setTimeout(() => commitNav(idx), 140);
