@@ -289,7 +289,10 @@ function render(keepScroll) {
   if (keepScroll) realignFeed(); else feedEl.scrollTo({ top: 0, behavior: 'auto' });
   syncAll();
   // 再描画直後の監視コールバックでは並び替えをしない（iOSで再描画→監視→再描画が連鎖し、問題が高速で入れ替わり続ける不具合の対策）
-  requestAnimationFrame(() => setTimeout(() => { suppressNav = false; }, 80));
+  // 描画後1秒は「落ち着き待ち」にする。読み込み直後はブラウザ側の表示確定（ツールバーの
+  // アニメーション等）で監視報告が乱れやすく、そのまま取り込むと開始直後に問題が飛ぶ（2026-11-22）。
+  // この間は suppressNav の分岐（スクロールの意思があるときだけ取り込む）が効く
+  setTimeout(() => { suppressNav = false; }, 1000);
 }
 
 function pendingCount() { return queue.filter(e => e.state === 'pending').length; }
