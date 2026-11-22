@@ -7,6 +7,10 @@
    ============================================================ */
 const GA_MEASUREMENT_ID = 'G-55DZP8B6B8';
 
+// ブラウザのスクロール位置の自動復元を止める。再読み込み・タブ復帰のときに
+// 前回のフィード位置が復元されると、開始直後に問題が飛んで見える原因になる（2026-11-22）
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 /* ===== 定数 ===== */
 const STORAGE_KEY = 'studyfeed.prod.v1';
 const INTERVALS = {
@@ -78,7 +82,10 @@ function fitAppHeight() {
 }
 function realignFeed() {
   const slide = feedEl.children[currentIdx];
-  if (slide) feedEl.scrollTo({ top: slide.offsetTop - 12, behavior: 'auto' });
+  if (!slide) return;
+  // offsetTop は body 基準でヘッダー・注意バーの高さ分ずれるため、画面上の実測差分で合わせる
+  const delta = slide.getBoundingClientRect().top - feedEl.getBoundingClientRect().top;
+  if (delta) feedEl.scrollTo({ top: feedEl.scrollTop + delta, behavior: 'auto' });
 }
 function refit() { fitAppHeight(); realignFeed(); }
 window.addEventListener('resize', fitAppHeight);
