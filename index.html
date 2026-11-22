@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>学習フィード</title>
 <meta name="description" content="スクロールするだけで一問一答が進む、スマホ向け学習フィード。アカウント不要・完全無料。">
-<link rel="stylesheet" href="style.css?v=20261120-1">
+<link rel="stylesheet" href="style.css?v=20261121-1">
 <script>
   // 描画前にアプリの高さを実測で固定する（iOSアプリ内ブラウザ対策）
   (function () {
@@ -38,6 +38,7 @@
     <span class="badge">残り <strong id="statLeft">0</strong></span>
     <span class="badge">苦手マーク <strong id="statWeak">0</strong></span>
     <button class="badge sw-badge is-paused" id="swBtn" type="button" title="ストップウォッチを開始／一時停止"><span id="swLabel">▶</span> 時間 <strong id="statTime">0:00</strong></button>
+    <button class="badge playlist-badge" id="playlistBadge" type="button" title="プレイリストをやめる" hidden>▶ プレイリスト：<strong id="playlistBadgeName"></strong> ✕</button>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
@@ -107,6 +108,9 @@
     <p class="setting-label">自作問題</p>
     <button type="button" class="btn-ghost btn-wide" id="customBtn">自作問題の登録・管理（<span id="customCount">0</span>件）</button>
 
+    <p class="setting-label">プレイリスト</p>
+    <button type="button" class="btn-ghost btn-wide" id="playlistBtn">プレイリストの作成・管理（<span id="playlistCount">0</span>件）</button>
+
     <p class="setting-label">学習時間の記録</p>
     <div id="studyLogList" class="study-log"></div>
 
@@ -148,11 +152,49 @@
   </div>
 </div>
 
+<!-- プレイリスト管理モーダル -->
+<div class="modal-overlay" id="playlistOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">プレイリスト</h2>
+    <p class="modal-text">苦手な問題やテスト範囲など、解きたい問題のセットを作れます。「解く」を押すと、そのセットだけのセッションが始まります。プレイリストはこの端末内にだけ保存されます。</p>
+    <label class="field-label" for="playlistName">新しいプレイリストの名前</label>
+    <input type="text" class="field-input" id="playlistName" placeholder="例：テスト範囲" maxlength="30">
+    <p class="field-error" id="playlistError" hidden>名前を入れてください。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="playlistCreateBtn">作る</button>
+    </div>
+    <p class="setting-label">作ったプレイリスト</p>
+    <div id="playlistList" class="custom-list"></div>
+    <p class="modal-note">問題の追加は、問題カード右の「リスト」ボタンからできます。教科タブの切り替えや「苦手だけ復習」「自作だけ解く」を使うと、プレイリストのセッションは終わります。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="playlistClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- プレイリスト追加ピッカー -->
+<div class="modal-overlay" id="playlistPickOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">プレイリストに追加</h2>
+    <p class="modal-text">この問題を入れるプレイリストを選んでください。</p>
+    <div id="playlistPickList" class="custom-list"></div>
+    <label class="field-label" for="playlistPickName">新しいプレイリストを作って追加</label>
+    <input type="text" class="field-input" id="playlistPickName" placeholder="例：テスト範囲" maxlength="30">
+    <p class="field-error" id="playlistPickError" hidden>名前を入れてください。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="playlistPickCreateBtn">作って追加</button>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="playlistPickClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <!-- 記録リセット確認 -->
 <div class="modal-overlay" id="confirmOverlay" hidden>
   <div class="modal">
     <h2 class="modal-title">記録を消しますか？</h2>
-    <p class="modal-text">学習履歴・自己判定・苦手マーク・自作問題がすべて消えます。元に戻せません。</p>
+    <p class="modal-text">学習履歴・自己判定・苦手マーク・自作問題・プレイリストがすべて消えます。元に戻せません。</p>
     <div class="modal-actions">
       <button type="button" class="btn-ghost" id="confirmCancel">キャンセル</button>
       <button type="button" class="btn-danger" id="confirmReset">消す</button>
@@ -160,6 +202,6 @@
   </div>
 </div>
 
-<script src="script.js?v=20261120-1"></script>
+<script src="script.js?v=20261121-1"></script>
 </body>
 </html>

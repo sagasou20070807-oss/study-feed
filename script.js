@@ -37,7 +37,8 @@ function defaultStore() {
     lastVisitDate: '',  // 'YYYY-MM-DD'
     noticeDismissed: false,
     studySeconds: {},   // 'YYYY-MM-DD' -> その日の学習秒数（端末内のみ。先生側指標「何分勉強したか」の基礎）
-    customQuestions: [] // 自作問題（questions.json と同じ {id, subject, question, answer, explanation} 形式。端末内のみ）
+    customQuestions: [], // 自作問題（questions.json と同じ {id, subject, question, answer, explanation} 形式。端末内のみ）
+    playlists: [] // プレイリスト（{id, name, qids: []}。塾側の宿題配信とも形式を共通化する想定。端末内のみ）
   };
 }
 let store = loadStore();
@@ -85,6 +86,7 @@ let currentIdx = 0;
 let filter = 'all';       // 'all' | 'english' | 'social'
 let weakOnly = false;
 let customOnly = false;
+let activePlaylistId = null; // 解いているプレイリストの id。null = 通常フィード
 let sessionJudged = 0;    // このセッションで判定した回数（再出題分も数える）
 let sessionByResult = { know: 0, fuzzy: 0, bad: 0 };
 let chunkShown = 0;       // 小結果を出した回数
@@ -179,11 +181,29 @@ function shuffle(arr) {
   return a;
 }
 
+function activePlaylist() {
+  if (!activePlaylistId) return null;
+  return (store.playlists || []).find(p => p.id === activePlaylistId) || null;
+}
+function questionInAnyPlaylist(qid) {
+  return (store.playlists || []).some(p => p.qids.indexOf(qid) >= 0);
+}
+
 function buildQueue() {
   let pool = questions.filter(q => filter === 'all' || q.subject === filter);
   if (weakOnly) pool = pool.filter(q => store.weak.includes(q.id));
   if (customOnly) pool = pool.filter(q => q.id.indexOf('custom-') === 0);
-  queue = shuffle(pool).map(q => ({ qid: q.id, attempt: 0, state: 'pending', revealed: false, result: '' }));
+  const pl = activePlaylist();
+  if (pl) {
+    // プレイリスト再生時は登録順（qids の並び）を基準にし、shuffle 設定のときだけ混ぜる
+    const byId = {};
+    pool.forEach(q => { byId[q.id] = q; });
+    pool = pl.qids.map(id => byId[id]).filter(Boolean);
+    if (pl.shuffle !== false) pool = shuffle(pool);
+  } else {
+    pool = shuffle(pool);
+  }
+  queue = pool.map(q => ({ qid: q.id, attempt: 0, state: 'pending', revealed: false, result: '' }));
   currentIdx = 0;
   sessionJudged = 0;
   sessionByResult = { know: 0, fuzzy: 0, bad: 0 };
@@ -210,6 +230,7 @@ function slideHtml(entry, idx) {
   const isWord = q.subject === 'english';
   const weakOn = store.weak.includes(q.id);
   const isCustom = q.id.indexOf('custom-') === 0;
+  const inAnyPl = questionInAnyPlaylist(q.id);
   const answerHtml = entry.revealed
     ? '<div class="answer-box"><span class="answer-label">答え</span><p class="answer-text">' + escapeHtml(q.answer) + '</p></div>'
     : '<p class="tap-hint">タップすると答えが見られるよ</p>';
@@ -227,6 +248,7 @@ function slideHtml(entry, idx) {
       '<div class="rail">' +
         '<button type="button" class="rail-btn rail-btn-why" data-act="explain" aria-label="解説"><span class="rail-icon">📖</span>解説</button>' +
         '<button type="button" class="rail-btn' + (weakOn ? ' is-on' : '') + '" data-act="weak" aria-label="苦手マーク"><span class="rail-icon">🔖</span>苦手</button>' +
+        '<button type="button" class="rail-btn' + (inAnyPl ? ' is-on' : '') + '" data-act="playlist" aria-label="プレイリストに追加"><span class="rail-icon">📋</span>リスト</button>' +
       '</div>' +
     '</div>';
 }
@@ -235,7 +257,10 @@ function render(keepScroll) {
   suppressNav = true;
   if (observer) observer.disconnect();
   if (queue.length === 0) {
-    feedEl.innerHTML = '<p class="feed-message">' + (customOnly
+    const pl = activePlaylist();
+    feedEl.innerHTML = '<p class="feed-message">' + (pl
+      ? '「' + pl.name + '」には問題がまだありません。\n問題カードの「リスト」ボタンから追加できます。'
+      : customOnly
       ? '自作問題がまだありません。\n設定の「自作問題の登録・管理」から追加できます。'
       : weakOnly
       ? '苦手マークの問題がまだありません。\n問題カードの「苦手」ボタンでマークできます。'
@@ -262,12 +287,22 @@ function render(keepScroll) {
 
 function pendingCount() { return queue.filter(e => e.state === 'pending').length; }
 
+function syncPlaylistBadge() {
+  const badge = document.getElementById('playlistBadge');
+  const nameEl = document.getElementById('playlistBadgeName');
+  const pl = activePlaylist();
+  if (!badge) return;
+  badge.hidden = !pl;
+  if (pl && nameEl) nameEl.textContent = pl.name;
+}
+
 function syncAll() {
   statDone.textContent = sessionJudged;
   statLeft.textContent = pendingCount();
   statWeak.textContent = store.weak.length;
   const total = sessionJudged + pendingCount();
   progressFill.style.width = total ? Math.round(sessionJudged / total * 100) + '%' : '0%';
+  syncPlaylistBadge();
   syncFooter();
 }
 
@@ -337,6 +372,7 @@ feedEl.addEventListener('click', ev => {
   if (railBtn) {
     if (railBtn.dataset.act === 'explain') openSheet(entry);
     if (railBtn.dataset.act === 'weak') toggleWeak(entry, railBtn);
+    if (railBtn.dataset.act === 'playlist') openPlaylistPicker(entry);
     return;
   }
   if (idx !== currentIdx) return;
@@ -467,6 +503,7 @@ document.getElementById('resultsAgain').addEventListener('click', () => {
 });
 document.getElementById('resultsWeak').addEventListener('click', () => {
   resultsOverlay.hidden = true;
+  activePlaylistId = null;
   weakOnly = true;
   syncWeakModeBtn();
   buildQueue();
@@ -478,6 +515,7 @@ document.getElementById('tabs').addEventListener('click', ev => {
   const tab = ev.target.closest('[data-filter]');
   if (!tab) return;
   filter = tab.dataset.filter;
+  activePlaylistId = null; // 教科タブを切り替えるとプレイリストのセッションは終わる
   document.querySelectorAll('#tabs .tab').forEach(t => t.classList.toggle('is-active', t === tab));
   buildQueue();
   render(false);
@@ -525,6 +563,7 @@ document.getElementById('settingsBtn').addEventListener('click', () => {
   syncWeakModeBtn();
   syncCustomModeBtn();
   syncCustomCount();
+  syncPlaylistCount();
   renderStudyLog();
   settingsOverlay.hidden = false;
 });
@@ -538,6 +577,7 @@ document.getElementById('intervalSeg').addEventListener('click', ev => {
 });
 weakModeBtn.addEventListener('click', () => {
   weakOnly = !weakOnly;
+  activePlaylistId = null;
   syncWeakModeBtn();
   settingsOverlay.hidden = true;
   buildQueue();
@@ -545,6 +585,7 @@ weakModeBtn.addEventListener('click', () => {
 });
 customModeBtn.addEventListener('click', () => {
   customOnly = !customOnly;
+  activePlaylistId = null;
   syncCustomModeBtn();
   settingsOverlay.hidden = true;
   buildQueue();
@@ -655,6 +696,11 @@ function addCustomQuestion() {
 function deleteCustomQuestion(qid) {
   store.customQuestions = (store.customQuestions || []).filter(q => q.id !== qid);
   questions = questions.filter(q => q.id !== qid);
+  // プレイリストに入っていた場合も一緒に外す
+  (store.playlists || []).forEach(pl => {
+    const i = pl.qids.indexOf(qid);
+    if (i >= 0) pl.qids.splice(i, 1);
+  });
   saveStore();
   ga('custom_delete', {});
   renderCustomList();
@@ -674,6 +720,202 @@ document.getElementById('customSubjectSeg').addEventListener('click', ev => {
   syncCustomSubjectSeg();
 });
 document.getElementById('customAddBtn').addEventListener('click', addCustomQuestion);
+
+/* ===== プレイリスト（生徒版・2026-11-21 キュー#3） ===== */
+// 形式は {id, name, qids: [], shuffle}。qids は公式・自作を問わず問題 id の配列。
+// shuffle はプレイリスト単位の出題順設定（true=シャッフル／false=登録順）。未設定（旧データ）は true 扱い。
+// 塾側の宿題配信（B2B (2)）も「塾が作ったプレイリストを配る」形でこの形式を共有する想定。
+const playlistOverlay = document.getElementById('playlistOverlay');
+const playlistPickOverlay = document.getElementById('playlistPickOverlay');
+const playlistNameInput = document.getElementById('playlistName');
+const playlistError = document.getElementById('playlistError');
+const playlistPickNameInput = document.getElementById('playlistPickName');
+const playlistPickError = document.getElementById('playlistPickError');
+let pickEntry = null; // ピッカーで追加対象にしている問題エントリ
+
+function playlistById(id) { return (store.playlists || []).find(p => p.id === id) || null; }
+function syncPlaylistCount() {
+  const n = (store.playlists || []).length;
+  const el = document.getElementById('playlistCount');
+  if (el) el.textContent = n;
+}
+function newPlaylistId() {
+  return 'pl-' + Date.now().toString(36) + Math.floor(Math.random() * 46656).toString(36);
+}
+function createPlaylist(name) {
+  const trimmed = (name || '').trim();
+  if (!trimmed) return { error: '名前を入れてください。' };
+  if ((store.playlists || []).some(p => p.name === trimmed)) return { error: '同じ名前のプレイリストがあります。' };
+  const pl = { id: newPlaylistId(), name: trimmed, qids: [], shuffle: true };
+  store.playlists.push(pl);
+  saveStore();
+  ga('playlist_create', {});
+  syncPlaylistCount();
+  return { playlist: pl };
+}
+function deletePlaylist(id) {
+  const wasActive = activePlaylistId === id;
+  store.playlists = (store.playlists || []).filter(p => p.id !== id);
+  if (wasActive) activePlaylistId = null;
+  saveStore();
+  ga('playlist_delete', {});
+  syncPlaylistCount();
+  renderPlaylistList();
+  // 再生中のプレイリストを消したときだけキューを作り直す（解いている途中は壊さない）
+  if (wasActive) { buildQueue(); render(false); }
+}
+function renderPlaylistList() {
+  const el = document.getElementById('playlistList');
+  el.innerHTML = '';
+  const list = store.playlists || [];
+  if (!list.length) {
+    const p = document.createElement('p');
+    p.className = 'custom-empty';
+    p.textContent = 'まだプレイリストがありません。「テスト範囲」「苦手な英単語」など、解きたい問題のセットを作れます。';
+    el.appendChild(p);
+    return;
+  }
+  list.forEach(pl => {
+    const row = document.createElement('div');
+    row.className = 'custom-row';
+    const name = document.createElement('span');
+    name.className = 'custom-q';
+    name.textContent = pl.name + '（' + pl.qids.length + '問）' + (pl.id === activePlaylistId ? ' ▶解いている' : '');
+    const play = document.createElement('button');
+    play.type = 'button';
+    play.className = 'playlist-play';
+    play.textContent = '解く';
+    play.disabled = pl.qids.length === 0;
+    play.addEventListener('click', () => playPlaylist(pl.id));
+    const shuf = document.createElement('button');
+    shuf.type = 'button';
+    shuf.className = 'playlist-toggle' + (pl.shuffle !== false ? ' is-on' : '');
+    shuf.textContent = 'シャッフル ' + (pl.shuffle !== false ? 'ON' : 'OFF');
+    shuf.addEventListener('click', () => togglePlaylistShuffle(pl.id));
+    const del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'custom-del';
+    del.textContent = '削除';
+    del.addEventListener('click', () => deletePlaylist(pl.id));
+    row.appendChild(name);
+    row.appendChild(play);
+    row.appendChild(shuf);
+    row.appendChild(del);
+    el.appendChild(row);
+  });
+}
+function togglePlaylistShuffle(id) {
+  const pl = playlistById(id);
+  if (!pl) return;
+  pl.shuffle = !(pl.shuffle !== false);
+  saveStore();
+  ga('playlist_shuffle', { on: pl.shuffle });
+  renderPlaylistList();
+}
+function openPlaylistManager() {
+  syncPlaylistCount();
+  renderPlaylistList();
+  playlistError.hidden = true;
+  playlistOverlay.hidden = false;
+}
+function closePlaylistManager() { playlistOverlay.hidden = true; }
+function playPlaylist(id) {
+  const pl = playlistById(id);
+  if (!pl || !pl.qids.length) return;
+  activePlaylistId = id;
+  weakOnly = false;
+  customOnly = false;
+  syncWeakModeBtn();
+  syncCustomModeBtn();
+  // プレイリストは教科をまたぐので、教科フィルターは「すべて」に戻す
+  filter = 'all';
+  document.querySelectorAll('#tabs .tab').forEach(t => t.classList.toggle('is-active', t.dataset.filter === 'all'));
+  ga('playlist_play', { count: pl.qids.length });
+  closePlaylistManager();
+  settingsOverlay.hidden = true;
+  buildQueue();
+  render(false);
+}
+function exitPlaylistMode() {
+  activePlaylistId = null;
+  buildQueue();
+  render(false);
+}
+function openPlaylistPicker(entry) {
+  pickEntry = entry;
+  renderPlaylistPicker();
+  playlistPickError.hidden = true;
+  playlistPickOverlay.hidden = false;
+}
+function closePlaylistPicker() { playlistPickOverlay.hidden = true; pickEntry = null; }
+function renderPlaylistPicker() {
+  const el = document.getElementById('playlistPickList');
+  el.innerHTML = '';
+  const list = store.playlists || [];
+  if (!list.length) {
+    const p = document.createElement('p');
+    p.className = 'custom-empty';
+    p.textContent = 'まだプレイリストがありません。下の欄から新しく作れます。';
+    el.appendChild(p);
+    return;
+  }
+  list.forEach(pl => {
+    const row = document.createElement('div');
+    row.className = 'custom-row';
+    const name = document.createElement('span');
+    name.className = 'custom-q';
+    name.textContent = pl.name + '（' + pl.qids.length + '問）';
+    const inPl = pickEntry && pl.qids.indexOf(pickEntry.qid) >= 0;
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'playlist-toggle' + (inPl ? ' is-on' : '');
+    toggle.textContent = inPl ? '追加済み ✓' : '追加する';
+    toggle.addEventListener('click', () => togglePlaylistMembership(pl.id));
+    row.appendChild(name);
+    row.appendChild(toggle);
+    el.appendChild(row);
+  });
+}
+function togglePlaylistMembership(plId) {
+  if (!pickEntry) return;
+  const pl = playlistById(plId);
+  if (!pl) return;
+  const i = pl.qids.indexOf(pickEntry.qid);
+  if (i >= 0) { pl.qids.splice(i, 1); ga('playlist_remove', {}); }
+  else { pl.qids.push(pickEntry.qid); ga('playlist_add', {}); }
+  saveStore();
+  renderPlaylistPicker();
+  // カードの「リスト」ボタンの表示も合わせる
+  const railBtn = feedEl.querySelector('.slide[data-idx="' + currentIdx + '"] [data-act="playlist"]');
+  if (railBtn) railBtn.classList.toggle('is-on', questionInAnyPlaylist(pickEntry.qid));
+  // 再生中のプレイリストへの変更で、まだ判定前ならキューに反映する
+  if (plId === activePlaylistId) refreshQueueIfIdle();
+}
+document.getElementById('playlistBtn').addEventListener('click', () => {
+  settingsOverlay.hidden = true;
+  openPlaylistManager();
+});
+document.getElementById('playlistClose').addEventListener('click', closePlaylistManager);
+playlistOverlay.addEventListener('click', ev => { if (ev.target === playlistOverlay) closePlaylistManager(); });
+document.getElementById('playlistCreateBtn').addEventListener('click', () => {
+  const res = createPlaylist(playlistNameInput.value);
+  if (res.error) { playlistError.textContent = res.error; playlistError.hidden = false; return; }
+  playlistError.hidden = true;
+  playlistNameInput.value = '';
+  renderPlaylistList();
+});
+document.getElementById('playlistPickClose').addEventListener('click', closePlaylistPicker);
+playlistPickOverlay.addEventListener('click', ev => { if (ev.target === playlistPickOverlay) closePlaylistPicker(); });
+document.getElementById('playlistPickCreateBtn').addEventListener('click', () => {
+  const res = createPlaylist(playlistPickNameInput.value);
+  if (res.error) { playlistPickError.textContent = res.error; playlistPickError.hidden = false; return; }
+  playlistPickError.hidden = true;
+  playlistPickNameInput.value = '';
+  // 作ったプレイリストに今の問題をそのまま追加する
+  if (pickEntry) { res.playlist.qids.push(pickEntry.qid); saveStore(); ga('playlist_add', {}); }
+  renderPlaylistPicker();
+});
+document.getElementById('playlistBadge').addEventListener('click', exitPlaylistMode);
 
 /* ===== 記録リセット ===== */
 const confirmOverlay = document.getElementById('confirmOverlay');

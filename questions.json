@@ -418,5 +418,285 @@
     "id": "eng-040",
     "question": "wait",
     "subject": "english"
+  },
+  {
+    "id": "eng-041",
+    "subject": "english",
+    "question": "live",
+    "answer": "住む・生きる",
+    "explanation": "I live in Tokyo.（私は東京に住んでいます）「住む」が基本。live in 〜 で「〜に住む」"
+  },
+  {
+    "id": "eng-042",
+    "subject": "english",
+    "question": "work",
+    "answer": "働く",
+    "explanation": "My father works at a bank.（私の父は銀行で働いています）study（勉強する）とペアで覚える"
+  },
+  {
+    "id": "eng-043",
+    "subject": "english",
+    "question": "learn",
+    "answer": "学ぶ・習う",
+    "explanation": "I learn English at school.（私は学校で英語を習います）studyは「勉強する」、learnは「学ぶ・習得する」という意味。studyは勉強する行為、learnは学んで知識や技能を身につけることに注目する"
+  },
+  {
+    "id": "eng-044",
+    "subject": "english",
+    "question": "call",
+    "answer": "電話する・呼ぶ",
+    "explanation": "Please call me tonight.（今夜私に電話してください）call 人で「人に電話する」。call 人 + 名前で「人を〜と呼ぶ」という意味にもなる"
+  },
+  {
+    "id": "eng-045",
+    "subject": "english",
+    "question": "meet",
+    "answer": "会う",
+    "explanation": "I meet my friends after school.（私は放課後、友達に会います）meetは「人と会う・初めて会う」。seeにも「会う」という意味があり、meetは人と会うことに焦点を当てる"
+  },
+  {
+    "id": "eng-046",
+    "subject": "english",
+    "question": "talk",
+    "answer": "話す",
+    "explanation": "Let's talk about the game.（その試合について話そう）talkは人と会話することに重点がある。speakは言語を話すことや、人前で話すことなどにも使われる"
+  },
+  {
+    "id": "eng-047",
+    "subject": "english",
+    "question": "find",
+    "answer": "見つける",
+    "explanation": "I found my key.（私は鍵を見つけました）findは「見つける」という意味。look forは「探す」という意味で、過去形はfound"
+  },
+  {
+    "id": "eng-048",
+    "subject": "english",
+    "question": "keep",
+    "answer": "保つ・続ける",
+    "explanation": "Keep the door open.（ドアを開けたままにしておいてください）keep 〜ing で「〜し続ける」"
+  },
+  {
+    "id": "eng-049",
+    "subject": "english",
+    "question": "try",
+    "answer": "試す・努力する",
+    "explanation": "Try this cake.（このケーキを食べてみてください）try to 〜 で「〜しようとする」"
+  },
+  {
+    "id": "eng-050",
+    "subject": "english",
+    "question": "stop",
+    "answer": "止める・やめる",
+    "explanation": "Stop the car here.（ここで車を止めてください）stop 〜ing で「〜するのをやめる」"
+  },
+  {
+    "id": "eng-051",
+    "subject": "english",
+    "question": "start",
+    "answer": "始める・始まる",
+    "explanation": "The game starts at three.（試合は3時に始まります）beginと同じく「始める・始まる」という意味。startは日常会話で特によく使われる"
+  },
+  {
+    "id": "eng-052",
+    "subject": "english",
+    "question": "visit",
+    "answer": "訪れる",
+    "explanation": "I visit my grandmother on Sundays.（私は日曜日には祖母を訪ねます）場所や人を訪ねるときの単語"
+  },
+  {
+    "id": "eng-053",
+    "subject": "english",
+    "question": "show",
+    "answer": "見せる",
+    "explanation": "Show me your picture.（あなたの写真を見せてください）show 人 もの の形でよく使う"
+  },
+  {
+    "id": "eng-054",
+    "subject": "english",
+    "question": "need",
+    "answer": "必要とする",
+    "explanation": "I need a pen.（私はペンが必要です）want（ほしい）より「なくては困る」という感じ"
+  },
+  {
+    "id": "eng-055",
+    "subject": "english",
+    "question": "remember",
+    "answer": "覚えている",
+    "explanation": "I remember his name.（私は彼の名前を覚えています）forget（忘れる）と反対の意味を持つ単語"
+  },
+  {
+    "id": "eng-056",
+    "subject": "english",
+    "question": "forget",
+    "answer": "忘れる",
+    "explanation": "Don't forget your bag.（かばんを忘れないでください）remember（覚えている）と反対の意味を持つ単語。過去形は forgot"
+  },
+  {
+    "id": "eng-057",
+    "subject": "english",
+    "question": "carry",
+    "answer": "運ぶ",
+    "explanation": "She carries a heavy bag.（彼女は重いかばんを運びます）carryは「運ぶ・持ち運ぶ」という意味。手や腕などで何かを持ち運ぶ場合によく使う"
+  },
+  {
+    "id": "eng-058",
+    "subject": "english",
+    "question": "bring",
+    "answer": "持ってくる",
+    "explanation": "Bring your book tomorrow.（明日、本を持ってきてください）bringは話し手や基準となる場所の方へ「持ってくる」。takeはそこから別の場所へ「持っていく」という意味"
+  },
+  {
+    "id": "eng-059",
+    "subject": "english",
+    "question": "clean",
+    "answer": "掃除する・きれいにする",
+    "explanation": "I clean my room every Sunday.（私は毎週日曜日に部屋を掃除します）形容詞では「きれいな」という意味にもなる"
+  },
+  {
+    "id": "eng-060",
+    "subject": "english",
+    "question": "enjoy",
+    "answer": "楽しむ",
+    "explanation": "I enjoy playing soccer.（私はサッカーをするのを楽しんでいます）enjoy 〜ing の形でよく使う"
+  },
+  {
+    "id": "soc-021",
+    "subject": "social",
+    "question": "米の生産量が日本一の都道府県は？",
+    "answer": "新潟県",
+    "explanation": "コシヒカリで知られる米どころ。東北地方も米の生産が盛んで、秋田県や山形県も上位に入る"
+  },
+  {
+    "id": "soc-022",
+    "subject": "social",
+    "question": "りんごの生産量が日本一の都道府県は？",
+    "answer": "青森県",
+    "explanation": "青森県は日本最大のりんごの産地で、全国の生産量の約6割を占める。冷涼な気候がりんごの栽培に適している"
+  },
+  {
+    "id": "soc-023",
+    "subject": "social",
+    "question": "普通温州みかんの収穫量が日本一の都道府県は？",
+    "answer": "静岡県",
+    "explanation": "静岡県は温州みかんの産地として有名。和歌山県や愛媛県も代表的なみかんの産地である"
+  },
+  {
+    "id": "soc-024",
+    "subject": "social",
+    "question": "荒茶の生産量が日本一の都道府県は？",
+    "answer": "鹿児島県",
+    "explanation": "鹿児島県は温暖な気候を生かした茶の栽培が盛んで、現在は荒茶の生産量が全国1位。静岡県も伝統的な茶の産地として有名"
+  },
+  {
+    "id": "soc-025",
+    "subject": "social",
+    "question": "じゃがいもの生産量が日本一の都道府県は？",
+    "answer": "北海道",
+    "explanation": "日本のじゃがいもの約8割を北海道が作っている。冷涼な気候と広い畑が向いている"
+  },
+  {
+    "id": "soc-026",
+    "subject": "social",
+    "question": "さつまいもの生産量が日本一の都道府県は？",
+    "answer": "鹿児島県",
+    "explanation": "火山灰の多いシラス台地でも育つ作物。焼酎の原料としても知られる"
+  },
+  {
+    "id": "soc-027",
+    "subject": "social",
+    "question": "酪農が最も盛んな都道府県は？",
+    "answer": "北海道",
+    "explanation": "広い土地を利用した酪農が盛んで、生乳の生産量は全国の約6割を占める"
+  },
+  {
+    "id": "soc-028",
+    "subject": "social",
+    "question": "自動車工業の中心で、トヨタ自動車の本社がある工業地帯は？",
+    "answer": "中京工業地帯",
+    "explanation": "愛知県を中心とする工業地帯。自動車や航空機などの機械工業が盛ん"
+  },
+  {
+    "id": "soc-029",
+    "subject": "social",
+    "question": "東京湾の沿岸に広がり、東京都と神奈川県にまたがる工業地帯は？",
+    "answer": "京浜工業地帯",
+    "explanation": "印刷・出版や機械工業などが盛ん。首都圏の消費地に近いのが特徴"
+  },
+  {
+    "id": "soc-030",
+    "subject": "social",
+    "question": "北九州工業地域で最も盛んな工業は？",
+    "answer": "鉄鋼業",
+    "explanation": "八幡製鉄所を中心に発展した地域で、かつて四大工業地帯の一つに数えられた。近くにあった筑豊炭田の石炭や、中国からの鉄鉱石を利用して鉄鋼業が発展した"
+  },
+  {
+    "id": "soc-031",
+    "subject": "social",
+    "question": "瀬戸内工業地域で、石油コンビナートに関連して盛んな工業は？",
+    "answer": "石油化学工業",
+    "explanation": "瀬戸内海沿岸には石油コンビナートが形成され、石油を原料とする化学工業が発達している。造船業や鉄鋼業も盛ん"
+  },
+  {
+    "id": "soc-032",
+    "subject": "social",
+    "question": "日本海側の冬の気候の特徴は？",
+    "answer": "雪が多い",
+    "explanation": "北西の季節風が日本海で湿気を含み、山にぶつかって雪を降らせる。豪雪地帯が多い"
+  },
+  {
+    "id": "soc-033",
+    "subject": "social",
+    "question": "瀬戸内地方の気候の特徴は？",
+    "answer": "雨が少ない",
+    "explanation": "中国山地と四国山地に挟まれているため、季節風が山にさえぎられ、雨が降りにくい。年間を通して降水量が少ない"
+  },
+  {
+    "id": "soc-034",
+    "subject": "social",
+    "question": "梅雨がない都道府県は？",
+    "answer": "北海道",
+    "explanation": "梅雨前線が北海道まで北上する前に消えてしまうため。夏も冷涼で過ごしやすい"
+  },
+  {
+    "id": "soc-035",
+    "subject": "social",
+    "question": "沖縄県の気候を何という？",
+    "answer": "亜熱帯気候",
+    "explanation": "年間を通して温暖で、冬も比較的暖かい。さとうきびやパイナップルなどの栽培が盛ん"
+  },
+  {
+    "id": "soc-036",
+    "subject": "social",
+    "question": "日本で最も広い平野は？",
+    "answer": "関東平野",
+    "explanation": "東京都・埼玉県・千葉県など1都6県に広がる。人口が集中し、畑作や都市が広がる"
+  },
+  {
+    "id": "soc-037",
+    "subject": "social",
+    "question": "木曽三川とは、どの3つの川のこと？",
+    "answer": "木曽川・長良川・揖斐川",
+    "explanation": "濃尾平野を流れる3つの川。江戸時代から治水工事が行われ、水田が広がった"
+  },
+  {
+    "id": "soc-038",
+    "subject": "social",
+    "question": "日本アルプスを構成する3つの山脈は？",
+    "answer": "飛騨山脈・木曽山脈・赤石山脈",
+    "explanation": "飛騨山脈は北アルプス、木曽山脈は中央アルプス、赤石山脈は南アルプスとも呼ばれる"
+  },
+  {
+    "id": "soc-039",
+    "subject": "social",
+    "question": "東京から北九州まで、太平洋沿岸に工業地帯が帯状に連なる地域を何という？",
+    "answer": "太平洋ベルト",
+    "explanation": "京浜・中京・阪神・北九州などの工業地帯が連なり、日本の工業生産の中心になっている"
+  },
+  {
+    "id": "soc-040",
+    "subject": "social",
+    "question": "東北地方を構成する県の数は？",
+    "answer": "6県",
+    "explanation": "青森県・岩手県・宮城県・秋田県・山形県・福島県の6県。米作りが盛んな地方"
   }
 ]
