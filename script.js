@@ -336,6 +336,24 @@ function syncFooter() {
 /* ===== フィードの移動・スキップ処理 ===== */
 let suppressNav = false;
 let navTimer = null;
+// 実際にスクロールするつもりの操作（指のドラッグ／ホイール）があった時刻。
+// タップだけではスクロール扱いしない（タップ起因のスナップずれで次へ進む不具合の対策, 2026-11-22）
+let lastNavIntentAt = 0;
+let touchStartY = null;
+let touchMaxDelta = 0;
+feedEl.addEventListener('touchstart', ev => {
+  touchStartY = ev.touches[0].clientY;
+  touchMaxDelta = 0;
+}, { passive: true });
+feedEl.addEventListener('touchmove', ev => {
+  if (touchStartY === null) return;
+  const d = Math.abs(ev.touches[0].clientY - touchStartY);
+  if (d > touchMaxDelta) touchMaxDelta = d;
+  if (touchMaxDelta > 12) lastNavIntentAt = Date.now();
+}, { passive: true });
+feedEl.addEventListener('touchend', () => { touchStartY = null; }, { passive: true });
+feedEl.addEventListener('wheel', () => { lastNavIntentAt = Date.now(); }, { passive: true });
+feedEl.addEventListener('pointermove', ev => { if (ev.buttons) lastNavIntentAt = Date.now(); }, { passive: true });
 function onCurrentChange(idx) {
   if (sessionEnded) return;
   if (idx === currentIdx) { syncFooter(); return; }
@@ -347,6 +365,8 @@ function onCurrentChange(idx) {
 }
 function commitNav(idx) {
   if (idx === currentIdx || sessionEnded) { syncFooter(); return; }
+  // 直近にスクロール操作がなければ、タップ等でスナップ位置がずれただけとみなし、移動しない
+  if (Date.now() - lastNavIntentAt > 1000) { realignFeed(); syncFooter(); return; }
   const prev = queue[currentIdx];
   const leavingIdx = currentIdx;
   currentIdx = idx;
