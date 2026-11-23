@@ -698,5 +698,145 @@
     "question": "東北地方を構成する県の数は？",
     "answer": "6県",
     "explanation": "青森県・岩手県・宮城県・秋田県・山形県・福島県の6県。米作りが盛んな地方"
+  },
+  {
+    "id": "eng-061",
+    "subject": "english",
+    "question": "big",
+    "answer": "大きい",
+    "explanation": "This bag is big.（このかばんは大きいです）small（小さい）と反対の意味"
+  },
+  {
+    "id": "eng-062",
+    "subject": "english",
+    "question": "small",
+    "answer": "小さい",
+    "explanation": "I have a small dog.（私は小さい犬を飼っています）big（大きい）と反対の意味"
+  },
+  {
+    "id": "eng-063",
+    "subject": "english",
+    "question": "long",
+    "answer": "長い",
+    "explanation": "This river is very long.（この川はとても長いです）時間の長さにも使う（a long time＝長い時間）"
+  },
+  {
+    "id": "eng-064",
+    "subject": "english",
+    "question": "short",
+    "answer": "短い",
+    "explanation": "I have short hair.（私は髪が短いです）人の背が低いときにも使う（He is short.＝彼は背が低いです）"
+  },
+  {
+    "id": "eng-065",
+    "subject": "english",
+    "question": "tall",
+    "answer": "（背が）高い",
+    "explanation": "He is tall.（彼は背が高いです）人や建物の「下から上までの高さ」に使う"
+  },
+  {
+    "id": "eng-066",
+    "subject": "english",
+    "question": "high",
+    "answer": "高い",
+    "explanation": "The mountain is high.（その山は高いです）highは山や空など、位置・標高の高さを表す。tallは人や建物など、下から上への高さを表すときによく使う"
+  },
+  {
+    "id": "eng-067",
+    "subject": "english",
+    "question": "new",
+    "answer": "新しい",
+    "explanation": "I have a new bike.（私は新しい自転車を持っています）old（古い）と反対の意味"
+  },
+  {
+    "id": "eng-068",
+    "subject": "english",
+    "question": "old",
+    "answer": "古い・年を取った",
+    "explanation": "This house is old.（この家は古いです）人の年齢にも使う（He is old.＝彼は年を取っています）"
+  },
+  {
+    "id": "eng-069",
+    "subject": "english",
+    "question": "happy",
+    "answer": "うれしい・幸せな",
+    "explanation": "I am happy today.（私は今日うれしいです）sad（悲しい）と反対の意味"
+  },
+  {
+    "id": "eng-070",
+    "subject": "english",
+    "question": "sad",
+    "answer": "悲しい",
+    "explanation": "She is sad today.（彼女は今日悲しいです）happy（うれしい）と反対の意味"
+  },
+  {
+    "id": "eng-071",
+    "subject": "english",
+    "question": "easy",
+    "answer": "簡単な・易しい",
+    "explanation": "This question is easy.（この問題は簡単です）difficult（難しい）と反対の意味。hardも「難しい」という意味になる"
+  },
+  {
+    "id": "eng-072",
+    "subject": "english",
+    "question": "difficult",
+    "answer": "難しい",
+    "explanation": "English is difficult for me.（英語は私には難しいです）easy（簡単な）と反対の意味"
+  },
+  {
+    "id": "eng-073",
+    "subject": "english",
+    "question": "fast",
+    "answer": "速い",
+    "explanation": "He is a fast runner.（彼は走るのが速いです）「速く」という副詞の形も同じ fast（He runs fast.＝彼は速く走ります）"
+  },
+  {
+    "id": "eng-074",
+    "subject": "english",
+    "question": "slow",
+    "answer": "遅い",
+    "explanation": "The turtle is slow.（カメは遅いです）fast（速い）と反対の意味"
+  },
+  {
+    "id": "eng-075",
+    "subject": "english",
+    "question": "strong",
+    "answer": "強い",
+    "explanation": "He is strong.（彼は強いです）weak（弱い）と反対の意味。力だけでなく「丈夫な」という意味にもなる"
+  },
+  {
+    "id": "eng-076",
+    "subject": "english",
+    "question": "weak",
+    "answer": "弱い",
+    "explanation": "I am weak in math.（私は数学が苦手です）strong（強い）と反対の意味。「〜が苦手」という意味でも使う"
+  },
+  {
+    "id": "eng-077",
+    "subject": "english",
+    "question": "hot",
+    "answer": "熱い・暑い",
+    "explanation": "The soup is hot.（そのスープは熱いです）気温の暑さにも使う（It is hot today.＝今日は暑いです）"
+  },
+  {
+    "id": "eng-078",
+    "subject": "english",
+    "question": "cold",
+    "answer": "冷たい・寒い",
+    "explanation": "The water is cold.（その水は冷たいです）気温の寒さにも使う（It is cold today.＝今日は寒いです）"
+  },
+  {
+    "id": "eng-079",
+    "subject": "english",
+    "question": "warm",
+    "answer": "暖かい",
+    "explanation": "This room is warm.（この部屋は暖かいです）hotほど温度が高くなく、心地よく暖かいという意味で使うことが多い"
+  },
+  {
+    "id": "eng-080",
+    "subject": "english",
+    "question": "busy",
+    "answer": "忙しい",
+    "explanation": "I am busy today.（私は今日忙しいです）free（ひまな）と反対の意味"
   }
 ]
