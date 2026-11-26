@@ -68,6 +68,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   padding: 10px 16px 6px;
 }
 .app-title { font-size: 20px; font-weight: 700; }
+.topbar-btns { display: flex; gap: 8px; }
 .settings-btn {
   border: 2px solid var(--line);
   background: #fff;
@@ -100,14 +101,18 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   padding: 4px;
   background: #eceff3;
   border-radius: 999px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 .tab {
-  flex: 1;
-  padding: 9px 0;
+  flex: 1 0 auto;
+  padding: 9px 10px;
   border-radius: 999px;
   font-size: 15px;
   font-weight: 600;
   color: var(--muted);
+  white-space: nowrap;
 }
 .tab.is-active { background: var(--ink); color: #fff; }
 
@@ -178,7 +183,10 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   border-radius: 20px;
   padding: 18px 18px 14px;
 }
-.card-scroll { min-height: 0; }
+/* 右端のレール（幅60px・right:12px）に問題文・答えが潜らないよう、テキスト側に
+   余白を確保する（2026-11-26 本人の不具合報告）。必要量＝レール右端まで72px
+   ＋間隔10px − カードの内側余白18px ＝ 64px。これで375px幅でも長文が隠れない */
+.card-scroll { min-height: 0; padding-right: 64px; }
 .card-scroll.can-scroll { overflow-y: auto; }
 
 .subject-chip {
@@ -191,6 +199,10 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 .subject-english { background: #e3ecfd; color: #2b5cb8; }
 .subject-social { background: #fdf0d5; color: #9a6a06; }
+.subject-math { background: #e0f2fe; color: #0369a1; }
+.subject-science { background: #dcfce7; color: #15803d; }
+.subject-japanese { background: #ffe4e6; color: #be123c; }
+.subject-review { background: #e0e7ff; color: #3730a3; }
 .card-count {
   position: absolute;
   top: 18px;
@@ -429,3 +441,43 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   font-size: 13px;
 }
 .playlist-toggle.is-on { border-color: var(--accent); color: var(--accent); background: #fff7ed; }
+
+/* ===== 苦手だけ復習バッジ・モード表示（2026-11-25 キュー#4） ===== */
+.weak-badge { border-color: #a855f7; color: #7e22ce; background: #faf5ff; }
+.weak-badge strong { color: #7e22ce; }
+.btn-ghost.is-on { border-color: #a855f7; color: #7e22ce; background: #faf5ff; }
+
+/* ===== 音声読み上げ・記録画面・週間グラフ（2026-11-25） ===== */
+/* 「読む」ボタンは音声読み上げがオンのときだけ出す。4つ並ぶぶんレールの中心もずらす */
+.rail-btn-speak { display: none; }
+.feed.tts-on .rail-btn-speak { display: flex; }
+.feed.tts-on .rail { margin-top: -138px; }
+
+.week-chart {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.week-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.week-min { font-size: 11px; font-weight: 700; color: var(--ink); min-height: 14px; }
+.week-bar-wrap {
+  height: 64px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.week-bar {
+  width: 70%;
+  max-width: 26px;
+  background: #f6c79b;
+  border-radius: 6px 6px 0 0;
+}
+.week-bar.is-today { background: var(--accent); }
+.week-day { font-size: 11px; color: var(--muted); }

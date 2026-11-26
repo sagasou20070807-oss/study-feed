@@ -13,13 +13,29 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
 /* ===== 定数 ===== */
 const STORAGE_KEY = 'studyfeed.prod.v1';
+/* 注意バーを閉じた記録専用のキー（2026-11-26）。本体ストアとは別に持つことで、
+   本体ストアだけが初期化・移行されても「閉じた」事実が残るようにする */
+const NOTICE_KEY = 'studyfeed.noticeDismissed.v1';
 const INTERVALS = {
   fast:   { bad: 3, fuzzy: 6,  label: '早め' },
   normal: { bad: 5, fuzzy: 10, label: 'ふつう' },
   slow:   { bad: 8, fuzzy: 15, label: '遅め' }
 };
 const MAX_REQUEUE = 3; // 同じ問題の再出題は最大3回まで
-const SUBJECT_LABEL = { english: '英単語', social: '社会' };
+/* 教科レジストリ（2026-11-25 科目タブの土台）。教科を増やすときはここに1行足すだけで
+   タブ・チップ・自作問題の教科選択に反映される。問題が0問の教科はタブを選ぶと
+   「準備中」表示になる（questions.json のスキーマ変更は不要：subject の値が増えるだけ） */
+const SUBJECTS = [
+  { key: 'english',  label: '英単語' },
+  { key: 'social',   label: '社会' },
+  { key: 'math',     label: '数学' },
+  { key: 'science',  label: '理科' },
+  { key: 'japanese', label: '国語' }
+];
+const SUBJECT_LABEL = {};
+SUBJECTS.forEach(s => { SUBJECT_LABEL[s.key] = s.label; });
+/* 復習キュー（間隔反復）の間隔（日数）。間違えた問題を翌日→3日後→7日後の段階で再出題する */
+const SRS_INTERVALS = [1, 3, 7];
 const JUDGE_LABEL = { know: '覚えてた', fuzzy: 'あいまい', bad: 'ダメだった' };
 
 /* ===== 端末内データ（LocalStorage） ===== */
@@ -37,10 +53,11 @@ function defaultStore() {
   return {
     answers: {},        // qid -> { last: 'know'|'fuzzy'|'bad', count: 回数 }
     weak: [],           // 苦手マークした qid の配列
-    settings: { interval: 'normal' },
+    settings: { interval: 'normal', tts: false },
     lastVisitDate: '',  // 'YYYY-MM-DD'
     noticeDismissed: false,
     studySeconds: {},   // 'YYYY-MM-DD' -> その日の学習秒数（端末内のみ。先生側指標「何分勉強したか」の基礎）
+    review: {},         // 復習キュー（間隔反復）: qid -> { stage: 0..2, due: 'YYYY-MM-DD' }。端末内のみ
     customQuestions: [], // 自作問題（questions.json と同じ {id, subject, question, answer, explanation} 形式。端末内のみ）
     playlists: [] // プレイリスト（{id, name, qids: []}。塾側の宿題配信とも形式を共通化する想定。端末内のみ）
   };
@@ -186,6 +203,48 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('pagehide', () => { if (!sessionEnded && swNowMs() >= 1000) commitStopwatch(); });
 
 function questionById(qid) { return questions.find(q => q.id === qid); }
+
+/* ===== 日付ユーティリティ・復習キュー・ストリーク（2026-11-25） ===== */
+function addDaysStr(dateStr, n) {
+  const p = dateStr.split('-').map(Number);
+  const d = new Date(p[0], p[1] - 1, p[2]);
+  d.setDate(d.getDate() + n);
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+// 期限（今日以前）が来ている復習問題の qid 一覧
+function dueReviewIds() {
+  const today = todayStr();
+  return Object.keys(store.review || {}).filter(qid => {
+    const e = store.review[qid];
+    return e && e.due && e.due <= today;
+  });
+}
+// 判定結果に応じて復習キューの予定を更新する。
+// ダメだった→段階0・翌日／あいまい→同じ段階の間隔で再設定／覚えてた→段階を進め、最終段階を終えたら卒業（キューから外す）。
+// 初めて正解した問題は登録しない（間違えた問題だけが復習キューの対象）。
+function scheduleReview(qid, result) {
+  if (!store.review) store.review = {};
+  const today = todayStr();
+  const cur = store.review[qid];
+  if (result === 'bad') {
+    store.review[qid] = { stage: 0, due: addDaysStr(today, SRS_INTERVALS[0]) };
+  } else if (result === 'fuzzy') {
+    const stage = cur ? cur.stage : 0;
+    store.review[qid] = { stage: stage, due: addDaysStr(today, SRS_INTERVALS[stage]) };
+  } else if (result === 'know' && cur) {
+    const next = cur.stage + 1;
+    if (next >= SRS_INTERVALS.length) delete store.review[qid];
+    else store.review[qid] = { stage: next, due: addDaysStr(today, SRS_INTERVALS[next]) };
+  }
+}
+// 連続学習日数。今日まだ記録がなければ昨日から数える（朝の時点で0日にならないように）
+function calcStreak() {
+  let streak = 0;
+  let cursor = todayStr();
+  if (!(store.studySeconds[cursor] > 0)) cursor = addDaysStr(cursor, -1);
+  while (store.studySeconds[cursor] > 0) { streak += 1; cursor = addDaysStr(cursor, -1); }
+  return streak;
+}
 function shuffle(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -217,7 +276,20 @@ function buildQueue() {
   } else {
     pool = shuffle(pool);
   }
-  queue = pool.map(q => ({ qid: q.id, attempt: 0, state: 'pending', revealed: false, result: '' }));
+  // 復習キュー：通常フィードのときだけ、期限が来た問題を先頭に出す（2026-11-25）。
+  // 「苦手だけ復習」・自作だけ・プレイリストとは対象の決め方が違うため競合させない
+  // （それらのモードでは復習キューの先頭寄せはしない）。
+  let reviewSet = new Set();
+  if (!pl && !weakOnly && !customOnly) {
+    const due = new Set(dueReviewIds());
+    const duePool = pool.filter(q => due.has(q.id));
+    if (duePool.length) {
+      const rest = pool.filter(q => !due.has(q.id));
+      pool = shuffle(duePool).concat(rest);
+      reviewSet = new Set(duePool.map(q => q.id));
+    }
+  }
+  queue = pool.map(q => ({ qid: q.id, attempt: 0, state: 'pending', revealed: false, result: '', review: reviewSet.has(q.id) }));
   currentIdx = 0;
   sessionJudged = 0;
   sessionByResult = { know: 0, fuzzy: 0, bad: 0 };
@@ -251,8 +323,9 @@ function slideHtml(entry, idx) {
   return '' +
     '<div class="card">' +
       '<div class="card-scroll">' +
-        '<span class="subject-chip subject-' + q.subject + '">' + SUBJECT_LABEL[q.subject] + '</span>' +
+        '<span class="subject-chip subject-' + q.subject + '">' + (SUBJECT_LABEL[q.subject] || q.subject) + '</span>' +
         (isCustom ? ' <span class="subject-chip subject-custom">自作</span>' : '') +
+        (entry.review ? ' <span class="subject-chip subject-review">🔁 復習</span>' : '') +
         '<span class="card-count">' + (idx + 1) + ' / ' + queue.length + ' 問目</span>' +
         '<p class="card-label">問題</p>' +
         '<p class="card-question' + (isWord ? ' is-word' : '') + '">' + escapeHtml(q.question) + '</p>' +
@@ -263,6 +336,7 @@ function slideHtml(entry, idx) {
         '<button type="button" class="rail-btn rail-btn-why" data-act="explain" aria-label="解説"><span class="rail-icon">📖</span>解説</button>' +
         '<button type="button" class="rail-btn' + (weakOn ? ' is-on' : '') + '" data-act="weak" aria-label="苦手マーク"><span class="rail-icon">🔖</span>苦手</button>' +
         '<button type="button" class="rail-btn' + (inAnyPl ? ' is-on' : '') + '" data-act="playlist" aria-label="プレイリストに追加"><span class="rail-icon">📋</span>リスト</button>' +
+        '<button type="button" class="rail-btn rail-btn-speak" data-act="speak" aria-label="問題を読み上げる"><span class="rail-icon">🔊</span>読む</button>' +
       '</div>' +
     '</div>';
 }
@@ -272,12 +346,16 @@ function render(keepScroll) {
   if (observer) observer.disconnect();
   if (queue.length === 0) {
     const pl = activePlaylist();
+    // 問題が1問もない教科（数学・理科・国語など）は「準備中」と明示する（2026-11-25 科目タブの土台）
+    const preparing = filter !== 'all' && !questions.some(q => q.subject === filter);
     feedEl.innerHTML = '<p class="feed-message">' + (pl
       ? '「' + pl.name + '」には問題がまだありません。\n問題カードの「リスト」ボタンから追加できます。'
       : customOnly
       ? '自作問題がまだありません。\n設定の「自作問題の登録・管理」から追加できます。'
       : weakOnly
       ? '苦手マークの問題がまだありません。\n問題カードの「苦手」ボタンでマークできます。'
+      : preparing
+      ? '「' + (SUBJECT_LABEL[filter] || filter) + '」の問題は準備中です。\nもう少し待ってね。他の教科は今まで通り解けます。'
       : '問題がありません。') + '</p>';
     syncAll();
     suppressNav = false;
@@ -313,6 +391,14 @@ function syncPlaylistBadge() {
   if (pl && nameEl) nameEl.textContent = pl.name;
 }
 
+// 苦手だけ復習中は画面上部にピルを常時表示する（2026-11-25 キュー#4）。
+// ピル自体が「全問題に戻る」ボタンになる（プレイリストのバッジと同じ流儀）。
+const weakBadge = document.getElementById('weakBadge');
+function syncWeakBadge() {
+  if (!weakBadge) return;
+  weakBadge.hidden = !weakOnly;
+}
+
 function syncAll() {
   statDone.textContent = sessionJudged;
   statLeft.textContent = pendingCount();
@@ -320,6 +406,7 @@ function syncAll() {
   const total = sessionJudged + pendingCount();
   progressFill.style.width = total ? Math.round(sessionJudged / total * 100) + '%' : '0%';
   syncPlaylistBadge();
+  syncWeakBadge();
   syncFooter();
 }
 
@@ -392,15 +479,79 @@ function commitNav(idx) {
   const prev = queue[currentIdx];
   const leavingIdx = currentIdx;
   currentIdx = idx;
-  // 判定しないまま通り過ぎた問題は、キューの一番後ろに戻す
-  if (prev && prev.state === 'pending' && leavingIdx < queue.length - 1) {
+  // 判定しないまま通り過ぎた問題は、キューの一番後ろに戻す。ただし答えを
+  // 見た問題はその場に残し、戻って判定できるようにする（2026-11-25 キュー#4）。
+  // 並び替えはDOM全体の再描画ではなく、該当スライドだけを末尾へ移動する。
+  if (prev && prev.state === 'pending' && !prev.revealed && leavingIdx < queue.length - 1) {
     queue.splice(leavingIdx, 1);
     queue.push(prev);
     if (currentIdx > leavingIdx) currentIdx -= 1;
-    render(true);
+    const slideEl = feedEl.children[leavingIdx];
+    if (slideEl && slideEl.classList.contains('slide')) {
+      feedEl.appendChild(slideEl);
+      renumberSlides(leavingIdx);
+      suppressNavBriefly();
+      realignFeed();
+    } else {
+      render(true);
+      return;
+    }
+    syncFooter();
     return;
   }
   syncFooter();
+}
+
+/* ===== 並び替えの surgical DOM 操作（2026-11-25 キュー#4・カクつき対策） ===== */
+// キューの並び替え・再出題のたびにDOM全体を作り直すと120枚のスライドを描き直すため、
+// 該当スライドだけを移動・挿入する。要素の移動では IntersectionObserver の
+// 監視は外れないので、新規挿入の要素だけ observe し直す。
+function renumberSlides(fromIdx) {
+  const slides = feedEl.children;
+  for (let i = fromIdx; i < slides.length; i++) {
+    const sl = slides[i];
+    if (!sl.classList || !sl.classList.contains('slide')) continue;
+    sl.dataset.idx = String(i);
+    const cc = sl.querySelector('.card-count');
+    if (cc) cc.textContent = (i + 1) + ' / ' + queue.length + ' 問目';
+  }
+}
+function refreshCardScroll(el) {
+  if (!el) return;
+  el.classList.toggle('can-scroll', el.scrollHeight > el.clientHeight + 2);
+}
+function suppressNavBriefly() {
+  suppressNav = true;
+  setTimeout(() => { suppressNav = false; }, 1000);
+}
+function insertSlideAt(entry, idx) {
+  const sec = document.createElement('section');
+  sec.className = 'slide';
+  sec.dataset.idx = String(idx);
+  sec.innerHTML = slideHtml(entry, idx);
+  const ref = feedEl.children[idx];
+  if (ref) feedEl.insertBefore(sec, ref); else feedEl.appendChild(sec);
+  renumberSlides(idx);
+  refreshCardScroll(sec.querySelector('.card-scroll'));
+  if (observer) observer.observe(sec);
+}
+function revealSlideAnswer(slide, entry) {
+  const q = questionById(entry.qid);
+  const cardScroll = slide.querySelector('.card-scroll');
+  if (!cardScroll || !q) return;
+  const box = document.createElement('div');
+  box.className = 'answer-box';
+  const label = document.createElement('span');
+  label.className = 'answer-label';
+  label.textContent = '答え';
+  const text = document.createElement('p');
+  text.className = 'answer-text';
+  text.textContent = q.answer;
+  box.appendChild(label);
+  box.appendChild(text);
+  const hint = cardScroll.querySelector('.tap-hint');
+  if (hint) cardScroll.replaceChild(box, hint); else cardScroll.appendChild(box);
+  refreshCardScroll(cardScroll);
 }
 
 /* ===== 答え表示 ===== */
@@ -415,13 +566,16 @@ feedEl.addEventListener('click', ev => {
     if (railBtn.dataset.act === 'explain') openSheet(entry);
     if (railBtn.dataset.act === 'weak') toggleWeak(entry, railBtn);
     if (railBtn.dataset.act === 'playlist') openPlaylistPicker(entry);
+    if (railBtn.dataset.act === 'speak') speakQuestion(entry);
     return;
   }
   if (idx !== currentIdx) return;
   if (!entry.revealed && entry.state === 'pending') {
     entry.revealed = true;
     ga('reveal', { subject: questionById(entry.qid).subject });
-    render(true);
+    // 答えの表示は該当スライドだけをその場で書き換える（全体の再描画はしない・2026-11-25）
+    revealSlideAnswer(slide, entry);
+    syncFooter();
   }
 });
 
@@ -476,6 +630,7 @@ function judge(result) {
   rec.last = result;
   rec.count += 1;
   store.answers[qid] = rec;
+  scheduleReview(qid, result); // 復習キュー（間隔反復）の予定も同じタイミングで更新する
   saveStore();
 
   sessionJudged += 1;
@@ -483,14 +638,17 @@ function judge(result) {
   ga('judge', { subject: questionById(qid).subject, result: result });
 
   // 再出題：ダメだった・あいまいは間隔をあけてキューの後方へ再挿入
+  // 挿入は該当スライドだけをDOMに追加する（全体の再描画はしない・2026-11-25）
   if ((result === 'bad' || result === 'fuzzy') && entry.attempt < MAX_REQUEUE) {
     const iv = INTERVALS[store.settings.interval] || INTERVALS.normal;
     const offset = result === 'bad' ? iv.bad : iv.fuzzy;
     const insertAt = Math.min(currentIdx + offset, queue.length);
-    queue.splice(insertAt, 0, { qid: qid, attempt: entry.attempt + 1, state: 'pending', revealed: false, result: '' });
+    const newEntry = { qid: qid, attempt: entry.attempt + 1, state: 'pending', revealed: false, result: '' };
+    queue.splice(insertAt, 0, newEntry);
+    insertSlideAt(newEntry, insertAt);
   }
 
-  render(true);
+  syncAll();
 
   // 10問ごとの小結果
   if (sessionJudged % 10 === 0 && pendingCount() > 0) {
@@ -535,6 +693,8 @@ function showResults() {
     '問／ダメだった ' + sessionByResult.bad + '問\n苦手マーク：' + store.weak.length + '件' +
     '\n学習時間：' + formatDurationJa(secs) + '（今日の合計：' + formatDurationJa(todayTotal) + '）';
   document.getElementById('resultsWeak').disabled = store.weak.length === 0;
+  // 苦手だけ・自作だけのセッションで終わったときだけ「全問題に戻る」を出す（2026-11-25 キュー#4）
+  document.getElementById('resultsAll').hidden = !(weakOnly || customOnly);
   resultsOverlay.hidden = false;
   syncFooter();
 }
@@ -548,6 +708,16 @@ document.getElementById('resultsWeak').addEventListener('click', () => {
   activePlaylistId = null;
   weakOnly = true;
   syncWeakModeBtn();
+  buildQueue();
+  render(false);
+});
+document.getElementById('resultsAll').addEventListener('click', () => {
+  resultsOverlay.hidden = true;
+  activePlaylistId = null;
+  weakOnly = false;
+  customOnly = false;
+  syncWeakModeBtn();
+  syncCustomModeBtn();
   buildQueue();
   render(false);
 });
@@ -573,9 +743,11 @@ function syncIntervalSeg() {
 }
 function syncWeakModeBtn() {
   weakModeBtn.textContent = '苦手だけ復習：' + (weakOnly ? 'オン' : 'オフ');
+  weakModeBtn.classList.toggle('is-on', weakOnly);
 }
 function syncCustomModeBtn() {
   customModeBtn.textContent = '自作だけ解く：' + (customOnly ? 'オン' : 'オフ');
+  customModeBtn.classList.toggle('is-on', customOnly);
 }
 function renderStudyLog() {
   const el = document.getElementById('studyLogList');
@@ -604,6 +776,7 @@ document.getElementById('settingsBtn').addEventListener('click', () => {
   syncIntervalSeg();
   syncWeakModeBtn();
   syncCustomModeBtn();
+  syncTtsBtn();
   syncCustomCount();
   syncPlaylistCount();
   renderStudyLog();
@@ -646,7 +819,10 @@ const customExplainInput = document.getElementById('customExplain');
 const customError = document.getElementById('customError');
 const CUSTOM_PLACEHOLDERS = {
   english: { q: '例：apple', a: '例：りんご', e: '例：an apple a day keeps the doctor away.（なくてもOK）' },
-  social: { q: '例：明治維新が起きたのは何年？', a: '例：1868年', e: '例：江戸幕府が終わり、明治政府が始まった出来事。（なくてもOK）' }
+  social: { q: '例：明治維新が起きたのは何年？', a: '例：1868年', e: '例：江戸幕府が終わり、明治政府が始まった出来事。（なくてもOK）' },
+  math: { q: '例：3x + 5 = 14 の x の値は？', a: '例：3', e: '例：移項すると 3x = 9、両辺を3で割って x = 3。（なくてもOK）' },
+  science: { q: '例：水を電気分解すると、2種類の気体ができる。何と何？', a: '例：水素と酸素', e: '例：水素：酸素 = 2：1 の体積比で出てくる。（なくてもOK）' },
+  japanese: { q: '例：「美しい」は何という品詞？', a: '例：形容詞', e: '例：「い」で終わり、ものの様子を表す言葉。（なくてもOK）' }
 };
 
 function syncCustomCount() {
@@ -959,6 +1135,187 @@ document.getElementById('playlistPickCreateBtn').addEventListener('click', () =>
 });
 document.getElementById('playlistBadge').addEventListener('click', exitPlaylistMode);
 
+// 苦手だけ復習中のバッジをタップすると、通常フィードへ戻る（2026-11-25 キュー#4）
+function exitWeakMode() {
+  weakOnly = false;
+  syncWeakModeBtn();
+  buildQueue();
+  render(false);
+}
+if (weakBadge) weakBadge.addEventListener('click', exitWeakMode);
+
+/* ===== 音声読み上げ（端末TTS・2026-11-25） ===== */
+// 端末の SpeechSynthesis で問題文を読む。自動再生はせず、設定でオンにしたときだけ
+// カードに「🔊 読む」ボタンが出て、押したときだけ読み上げる（声質・対応は端末依存）。
+function speakQuestion(entry) {
+  const q = questionById(entry.qid);
+  if (!q || !('speechSynthesis' in window)) return;
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(q.question);
+    // 英単語は英語の声で、その他の教科は日本語で読む
+    u.lang = q.subject === 'english' ? 'en-US' : 'ja-JP';
+    u.rate = q.subject === 'english' ? 0.9 : 1.0;
+    window.speechSynthesis.speak(u);
+    ga('tts_speak', { subject: q.subject });
+  } catch (e) { /* 読み上げできない環境では何もしない */ }
+}
+const ttsBtn = document.getElementById('ttsBtn');
+function syncTtsBtn() {
+  if (!ttsBtn) return;
+  const on = !!(store.settings && store.settings.tts);
+  ttsBtn.textContent = '音声読み上げ：' + (on ? 'オン' : 'オフ');
+  ttsBtn.classList.toggle('is-on', on);
+  feedEl.classList.toggle('tts-on', on);
+}
+if (ttsBtn) ttsBtn.addEventListener('click', () => {
+  if (!store.settings) store.settings = { interval: 'normal', tts: false };
+  store.settings.tts = !store.settings.tts;
+  saveStore();
+  syncTtsBtn();
+  ga('tts_toggle', { on: store.settings.tts ? 1 : 0 });
+});
+
+/* ===== 教科タブの生成（2026-11-25 科目タブの土台） ===== */
+// タブは SUBJECTS レジストリから作る。教科が増えてもHTMLを書き換えなくてよい。
+function buildTabs() {
+  const nav = document.getElementById('tabs');
+  if (!nav) return;
+  nav.innerHTML = '';
+  const mk = (key, label) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tab' + (filter === key ? ' is-active' : '');
+    b.dataset.filter = key;
+    b.textContent = label;
+    return b;
+  };
+  nav.appendChild(mk('all', 'すべて'));
+  SUBJECTS.forEach(s => nav.appendChild(mk(s.key, s.label)));
+}
+
+/* ===== 記録専用画面（2026-11-25） ===== */
+// フィードで解かずに、学習の見える化（週間グラフ・連続日数）と履歴・復習予定だけを見る画面。
+const recordsOverlay = document.getElementById('recordsOverlay');
+function fmtMin(totalSeconds) { return Math.round(totalSeconds / 60); }
+function renderRecords() {
+  const body = document.getElementById('recordsBody');
+  if (!body) return;
+  body.innerHTML = '';
+  const today = todayStr();
+  const days = Object.keys(store.studySeconds).filter(d => store.studySeconds[d] > 0).sort().reverse();
+  const totalSecs = days.reduce((a, d) => a + store.studySeconds[d], 0);
+  const todaySecs = store.studySeconds[today] || 0;
+  let weekSecs = 0;
+  for (let i = 0; i < 7; i++) weekSecs += store.studySeconds[addDaysStr(today, -i)] || 0;
+  const judgedTotal = Object.keys(store.answers || {}).reduce((a, k) => a + (store.answers[k].count || 0), 0);
+
+  const addRow = (label, value, cls) => {
+    const row = document.createElement('div');
+    row.className = 'study-log-row' + (cls ? ' ' + cls : '');
+    const a = document.createElement('span'); a.textContent = label;
+    const b = document.createElement('span'); b.textContent = value;
+    row.appendChild(a); row.appendChild(b);
+    body.appendChild(row);
+  };
+  const addLabel = text => {
+    const p = document.createElement('p');
+    p.className = 'setting-label';
+    p.textContent = text;
+    body.appendChild(p);
+  };
+
+  addLabel('つづき具合');
+  addRow('🔥 連続学習日数', calcStreak() + '日', 'study-log-total');
+  addRow('今日の学習時間', formatDurationJa(todaySecs));
+  addRow('今週（直近7日）の合計', formatDurationJa(weekSecs));
+  addRow('累計の学習時間', formatDurationJa(totalSecs));
+  addRow('判定した回数（累計）', judgedTotal + '回');
+  addRow('苦手マーク', store.weak.length + '件');
+
+  // 週間グラフ：直近7日の学習時間（分）を棒グラフで出す
+  addLabel('今週のグラフ（学習時間）');
+  const week = [];
+  let maxMin = 0;
+  for (let i = 6; i >= 0; i--) {
+    const d = addDaysStr(today, -i);
+    const mins = fmtMin(store.studySeconds[d] || 0);
+    week.push({ date: d, mins: mins });
+    if (mins > maxMin) maxMin = mins;
+  }
+  const chart = document.createElement('div');
+  chart.className = 'week-chart';
+  const DOW = ['日', '月', '火', '水', '木', '金', '土'];
+  week.forEach(w => {
+    const p = w.date.split('-').map(Number);
+    const col = document.createElement('div');
+    col.className = 'week-col';
+    const min = document.createElement('span');
+    min.className = 'week-min';
+    min.textContent = w.mins ? w.mins + '分' : '';
+    const wrap = document.createElement('div');
+    wrap.className = 'week-bar-wrap';
+    const bar = document.createElement('div');
+    bar.className = 'week-bar' + (w.date === today ? ' is-today' : '');
+    bar.style.height = w.mins ? Math.max(8, Math.round(w.mins / (maxMin || 1) * 100)) + '%' : '2px';
+    wrap.appendChild(bar);
+    const day = document.createElement('span');
+    day.className = 'week-day';
+    day.textContent = p[1] + '/' + p[2] + '(' + DOW[new Date(p[0], p[1] - 1, p[2]).getDay()] + ')';
+    col.appendChild(min); col.appendChild(wrap); col.appendChild(day);
+    chart.appendChild(col);
+  });
+  body.appendChild(chart);
+
+  // 復習キューの予定
+  addLabel('復習キュー');
+  const enrolled = Object.keys(store.review || {}).filter(qid => questionById(qid));
+  const dueNow = dueReviewIds().filter(qid => questionById(qid));
+  addRow('今日の復習', dueNow.length + '問');
+  addRow('復習中の問題（全部）', enrolled.length + '問');
+  if (enrolled.length) {
+    const nextDue = enrolled.map(qid => store.review[qid].due).filter(Boolean).sort()[0];
+    if (nextDue && dueNow.length === 0) {
+      const p = nextDue.split('-').map(Number);
+      addRow('次の復習日', p[1] + '月' + p[2] + '日');
+    }
+  }
+
+  // 日別の履歴
+  addLabel('履歴');
+  if (!days.length) {
+    const p = document.createElement('p');
+    p.className = 'custom-empty';
+    p.textContent = 'まだ記録がありません。フィードで勉強すると、ここに残ります。';
+    body.appendChild(p);
+  } else {
+    const list = document.createElement('div');
+    list.className = 'study-log';
+    days.slice(0, 30).forEach(d => {
+      const p = d.split('-').map(Number);
+      const row = document.createElement('div');
+      row.className = 'study-log-row';
+      const a = document.createElement('span');
+      a.textContent = p[0] + '年' + p[1] + '月' + p[2] + '日';
+      const b = document.createElement('span');
+      b.textContent = formatDurationJa(store.studySeconds[d]);
+      row.appendChild(a); row.appendChild(b);
+      list.appendChild(row);
+    });
+    body.appendChild(list);
+  }
+}
+function openRecords() {
+  renderRecords();
+  if (recordsOverlay) recordsOverlay.hidden = false;
+}
+function closeRecords() { if (recordsOverlay) recordsOverlay.hidden = true; }
+const recordsBtn = document.getElementById('recordsBtn');
+if (recordsBtn) recordsBtn.addEventListener('click', openRecords);
+const recordsClose = document.getElementById('recordsClose');
+if (recordsClose) recordsClose.addEventListener('click', closeRecords);
+if (recordsOverlay) recordsOverlay.addEventListener('click', ev => { if (ev.target === recordsOverlay) closeRecords(); });
+
 /* ===== 記録リセット ===== */
 const confirmOverlay = document.getElementById('confirmOverlay');
 document.getElementById('resetBtn').addEventListener('click', () => { confirmOverlay.hidden = false; });
@@ -968,12 +1325,28 @@ document.getElementById('confirmReset').addEventListener('click', () => {
   location.reload();
 });
 
-/* ===== 初回注意バー ===== */
+/* ===== 初回注意バー =====
+   仕様（2026-11-26 本人の不具合報告で統一）：
+   - 出すのは「本当の初回」だけ。過去の訪問・学習データが端末に残っている
+     （＝初回ではない）端末には出さない。
+   - ×で閉じたら二度と出さない。本体ストアの noticeDismissed と、専用キー
+     NOTICE_KEY の両方に記録し、どちらか残っていれば非表示を維持する。
+   - バナーは通常フロー内の静的表示（fixed/sticky ではない）で、閉じれば
+     そのぶんフィードが広がる。 */
 const noticeBar = document.getElementById('noticeBar');
-if (!store.noticeDismissed) noticeBar.hidden = false;
+function noticeIsDismissed() {
+  if (store.noticeDismissed) return true;
+  try { return localStorage.getItem(NOTICE_KEY) === '1'; } catch (e) { return false; }
+}
+const hasPriorHistory = Boolean(store.lastVisitDate)
+  || Object.keys(store.answers).length > 0
+  || Object.keys(store.studySeconds).length > 0
+  || (store.customQuestions && store.customQuestions.length > 0);
+if (!noticeIsDismissed() && !hasPriorHistory) noticeBar.hidden = false;
 document.getElementById('noticeClose').addEventListener('click', () => {
   noticeBar.hidden = true;
   store.noticeDismissed = true;
+  try { localStorage.setItem(NOTICE_KEY, '1'); } catch (e) { /* 保存できない環境では今回の表示だけ閉じる */ }
   saveStore();
   refit();
 });
@@ -987,6 +1360,8 @@ function todayStr() {
 async function init() {
   initAnalytics();
   fitAppHeight();
+  buildTabs();   // 教科タブは SUBJECTS レジストリから生成する
+  syncTtsBtn();  // 音声読み上げの設定をフィードへ反映する
 
   // 再訪（継続率）の計測：前回訪問日が今日より前なら「再訪」
   const today = todayStr();

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>学習フィード</title>
 <meta name="description" content="スクロールするだけで一問一答が進む、スマホ向け学習フィード。アカウント不要・完全無料。">
-<link rel="stylesheet" href="style.css?v=20261122-2">
+<link rel="stylesheet" href="style.css?v=20261126-1">
 <script>
   // 描画前にアプリの高さを実測で固定する（iOSアプリ内ブラウザ対策）
   (function () {
@@ -19,7 +19,10 @@
 
   <header class="topbar">
     <div class="app-title">学習フィード</div>
-    <button type="button" class="settings-btn" id="settingsBtn" aria-label="設定">⚙️ 設定</button>
+    <div class="topbar-btns">
+      <button type="button" class="settings-btn" id="recordsBtn" aria-label="学習記録を見る">📊 記録</button>
+      <button type="button" class="settings-btn" id="settingsBtn" aria-label="設定">⚙️ 設定</button>
+    </div>
   </header>
 
   <div class="notice-bar" id="noticeBar" hidden>
@@ -39,6 +42,7 @@
     <span class="badge">苦手マーク <strong id="statWeak">0</strong></span>
     <button class="badge sw-badge is-paused" id="swBtn" type="button" title="ストップウォッチを開始／一時停止"><span id="swLabel">▶</span> 時間 <strong id="statTime">0:00</strong></button>
     <button class="badge playlist-badge" id="playlistBadge" type="button" title="プレイリストをやめる" hidden>▶ プレイリスト：<strong id="playlistBadgeName"></strong> ✕</button>
+    <button class="badge weak-badge" id="weakBadge" type="button" title="苦手だけ復習をやめて全問題に戻る" hidden>🔖 苦手だけ復習中 ✕</button>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
@@ -84,6 +88,7 @@
     <div class="modal-actions">
       <button type="button" class="btn-primary" id="resultsAgain">もう一度</button>
       <button type="button" class="btn-ghost" id="resultsWeak">苦手だけ復習</button>
+      <button type="button" class="btn-ghost" id="resultsAll" hidden>全問題に戻る</button>
     </div>
     <p class="modal-note">※学習記録はこの端末（ブラウザ）内のみに保存されます。履歴やキャッシュを削除するとリセットされます。</p>
   </div>
@@ -104,6 +109,10 @@
     <p class="setting-label">復習モード</p>
     <button type="button" class="btn-ghost btn-wide" id="weakModeBtn">苦手だけ復習：オフ</button>
     <button type="button" class="btn-ghost btn-wide" id="customModeBtn">自作だけ解く：オフ</button>
+
+    <p class="setting-label">音声</p>
+    <button type="button" class="btn-ghost btn-wide" id="ttsBtn">音声読み上げ：オフ</button>
+    <p class="modal-note">オンにすると、問題カードに「🔊 読む」ボタンが出て、端末の音声で問題文を読み上げます（自動では読み上げません）。</p>
 
     <p class="setting-label">自作問題</p>
     <button type="button" class="btn-ghost btn-wide" id="customBtn">自作問題の登録・管理（<span id="customCount">0</span>件）</button>
@@ -132,6 +141,9 @@
     <div class="seg" id="customSubjectSeg">
       <button type="button" data-subject="english" class="is-active">英単語</button>
       <button type="button" data-subject="social">社会</button>
+      <button type="button" data-subject="math">数学</button>
+      <button type="button" data-subject="science">理科</button>
+      <button type="button" data-subject="japanese">国語</button>
     </div>
     <label class="field-label" for="customQuestion">問題</label>
     <input type="text" class="field-input" id="customQuestion" placeholder="例：apple" maxlength="200">
@@ -190,6 +202,18 @@
   </div>
 </div>
 
+<!-- 記録専用画面 -->
+<div class="modal-overlay" id="recordsOverlay" hidden>
+  <div class="modal">
+    <h2 class="modal-title">学習記録</h2>
+    <div id="recordsBody"></div>
+    <p class="modal-note">※学習記録はこの端末（ブラウザ）内のみに保存されます。履歴やキャッシュを削除するとリセットされます。</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-primary" id="recordsClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <!-- 記録リセット確認 -->
 <div class="modal-overlay" id="confirmOverlay" hidden>
   <div class="modal">
@@ -202,6 +226,6 @@
   </div>
 </div>
 
-<script src="script.js?v=20261122-2"></script>
+<script src="script.js?v=20261126-1"></script>
 </body>
 </html>
