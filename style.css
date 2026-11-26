@@ -213,6 +213,12 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .card-label { margin: 16px 0 6px; font-size: 14px; color: var(--muted); }
 .card-question { margin: 0; font-size: 30px; font-weight: 700; line-height: 1.45; overflow-wrap: anywhere; }
 .card-question.is-word { font-size: 44px; }
+/* 文字数による段階縮小（2026-11-26）。短文は現行サイズのまま、長文だけ小さくして
+   答えエリアまで1画面に収める。line-height は長文ほど少し広げる */
+.card-question.q-md { font-size: 26px; }
+.card-question.q-sm { font-size: 23px; line-height: 1.5; }
+.card-question.q-xs { font-size: 20px; line-height: 1.55; }
+.card-question.q-xxs { font-size: 18px; line-height: 1.6; }
 .card-sub { margin: 8px 0 0; font-size: 16px; color: var(--muted); }
 
 .answer-box {
@@ -224,6 +230,9 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 .answer-label { font-size: 13px; font-weight: 700; color: var(--accent); }
 .answer-text { margin: 4px 0 0; font-size: 26px; font-weight: 700; line-height: 1.4; }
+/* 長い答え（三大義務など）は段階的に小さくして1画面に収める（2026-11-26） */
+.answer-text.a-md { font-size: 22px; }
+.answer-text.a-sm { font-size: 19px; line-height: 1.45; }
 .tap-hint { margin-top: 18px; font-size: 14px; color: var(--muted); }
 
 /* 右側アイコンレール（transformを使わずマージンで中央寄せ） */

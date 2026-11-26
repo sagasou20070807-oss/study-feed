@@ -311,6 +311,25 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+/* 文字数に応じた文字サイズの段階（2026-11-26 長文で答えが見えなくなる問題の対策）。
+   短い英単語は大きいまま、長い文は段階的に小さくして答えまで1画面に収める。
+   line-height は長文ほど少し広げ、詰まりすぎないようにする（style.css 側で定義） */
+function questionSizeClass(q) {
+  const len = String(q.question).length;
+  if (q.subject === 'english' && len <= 15) return ' is-word';
+  if (len <= 15) return '';
+  if (len <= 30) return ' q-md';
+  if (len <= 55) return ' q-sm';
+  if (len <= 90) return ' q-xs';
+  return ' q-xxs';
+}
+function answerSizeClass(answer) {
+  const len = String(answer).length;
+  if (len <= 12) return '';
+  if (len <= 25) return ' a-md';
+  return ' a-sm';
+}
+
 function slideHtml(entry, idx) {
   const q = questionById(entry.qid);
   const isWord = q.subject === 'english';
@@ -318,7 +337,7 @@ function slideHtml(entry, idx) {
   const isCustom = q.id.indexOf('custom-') === 0;
   const inAnyPl = questionInAnyPlaylist(q.id);
   const answerHtml = entry.revealed
-    ? '<div class="answer-box"><span class="answer-label">答え</span><p class="answer-text">' + escapeHtml(q.answer) + '</p></div>'
+    ? '<div class="answer-box"><span class="answer-label">答え</span><p class="answer-text' + answerSizeClass(q.answer) + '">' + escapeHtml(q.answer) + '</p></div>'
     : '<p class="tap-hint">タップすると答えが見られるよ</p>';
   return '' +
     '<div class="card">' +
@@ -328,7 +347,7 @@ function slideHtml(entry, idx) {
         (entry.review ? ' <span class="subject-chip subject-review">🔁 復習</span>' : '') +
         '<span class="card-count">' + (idx + 1) + ' / ' + queue.length + ' 問目</span>' +
         '<p class="card-label">問題</p>' +
-        '<p class="card-question' + (isWord ? ' is-word' : '') + '">' + escapeHtml(q.question) + '</p>' +
+        '<p class="card-question' + questionSizeClass(q) + '">' + escapeHtml(q.question) + '</p>' +
         (isWord ? '<p class="card-sub">この単語の意味は？</p>' : '') +
         answerHtml +
       '</div>' +
@@ -545,13 +564,31 @@ function revealSlideAnswer(slide, entry) {
   label.className = 'answer-label';
   label.textContent = '答え';
   const text = document.createElement('p');
-  text.className = 'answer-text';
+  text.className = 'answer-text' + answerSizeClass(q.answer);
   text.textContent = q.answer;
   box.appendChild(label);
   box.appendChild(text);
   const hint = cardScroll.querySelector('.tap-hint');
   if (hint) cardScroll.replaceChild(box, hint); else cardScroll.appendChild(box);
   refreshCardScroll(cardScroll);
+  scrollAnswerIntoView(box);
+}
+
+/* 答えを開いたとき、答えエリアが画面内に見える位置まで寄せる（2026-11-26）。
+   長文カードでは答えがカード内スクロール（.can-scroll）の下に隠れるため。
+   block:'nearest' なので、フィード側のスナップ位置は原則動かさず、
+   いちばん内側のスクロール（カード内）だけが寄る。回答済みカードが
+   その場に残る挙動（並び替えなし）とは競合しない */
+function scrollAnswerIntoView(box) {
+  if (!box) return;
+  const run = () => {
+    if (typeof box.scrollIntoView !== 'function') return;
+    try { box.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    catch (e) { box.scrollIntoView(); }
+  };
+  // レイアウト確定後に呼ぶ（答えボックスの挿入直後は高さが未確定なため）
+  if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run);
+  else run();
 }
 
 /* ===== 答え表示 ===== */
