@@ -1398,5 +1398,705 @@
   "question": "1837年、大坂で飢饉への不満から反乱を起こした元与力は？",
   "answer": "大塩平八郎",
   "explanation": "天保の大飢饉のなか、大坂の元与力・大塩平八郎が貧しい人々を救うため反乱を起こした"
+ },
+ {
+  "id": "soc-081",
+  "subject": "social",
+  "question": "1871年、藩を廃止して県を置き、政府が任命する県令（知事）を置いた改革は？",
+  "answer": "廃藩置県",
+  "explanation": "版籍奉還（1869年）の後、全国の藩をなくして県に統一した。中央政府が直接治める中央集権化が進んだ"
+ },
+ {
+  "id": "soc-082",
+  "subject": "social",
+  "question": "1871年、岩倉具視を団長として欧米へ派遣された使節団は？",
+  "answer": "岩倉使節団",
+  "explanation": "政府の要人が約2年かけて欧米各国を回った。不平等条約の改正は進まなかったが、各国の制度や産業を調査し、帰国後の改革に生かされた"
+ },
+ {
+  "id": "soc-083",
+  "subject": "social",
+  "question": "1873年、土地の所有者に地価の3％を現金で納めさせることにした税制改革は？",
+  "answer": "地租改正",
+  "explanation": "土地の所有者に地券を発行し、税を米ではなく現金で納める仕組みにした。政府の収入が安定した一方、負担への不満から農民の一揆も起きた"
+ },
+ {
+  "id": "soc-084",
+  "subject": "social",
+  "question": "民撰議院設立建白書を提出し、国会開設を求める自由民権運動を指導した人物は？",
+  "answer": "板垣退助",
+  "explanation": "土佐出身の政治家。1874年に建白書を出して運動を広げ、後に自由党を結成した。国会を開くことを求める声は全国に広がった"
+ },
+ {
+  "id": "soc-085",
+  "subject": "social",
+  "question": "1885年に内閣制度ができ、初代の内閣総理大臣となった人物は？",
+  "answer": "伊藤博文",
+  "explanation": "長州出身。内閣制度の創設とともに初代首相に就いた。大日本帝国憲法の制定でも中心的な役割を果たした"
+ },
+ {
+  "id": "soc-086",
+  "subject": "social",
+  "question": "1894年、朝鮮をめぐる対立から始まった、日本と清との戦争は？",
+  "answer": "日清戦争",
+  "explanation": "翌1895年の下関条約で、日本は遼東半島や台湾などを得た。清の弱さが明らかになり、列強の中国進出が進んだ"
+ },
+ {
+  "id": "soc-087",
+  "subject": "social",
+  "question": "日清戦争後、ロシア・フランス・ドイツが日本に遼東半島を清へ返すよう求めた出来事は？",
+  "answer": "三国干渉",
+  "explanation": "1895年、3国の圧力に日本は従わざるを得なかった。この屈辱が、ロシアへの対抗心を強めることになった"
+ },
+ {
+  "id": "soc-088",
+  "subject": "social",
+  "question": "1904年、満州と朝鮮をめぐって日本とロシアが戦った戦争は？",
+  "answer": "日露戦争",
+  "explanation": "1905年、アメリカの仲介によるポーツマス条約で講和した。賠償金が得られなかったため、国民の不満も招いた"
+ },
+ {
+  "id": "soc-089",
+  "subject": "social",
+  "question": "1910年、日本が韓国を併合し、植民地支配を始めた出来事は？",
+  "answer": "韓国併合",
+  "explanation": "朝鮮総督府が置かれ、土地調査や日本語教育などを通じた支配が行われた。独立を求める運動も続いた"
+ },
+ {
+  "id": "soc-090",
+  "subject": "social",
+  "question": "1914年にヨーロッパで始まり、日本も連合国側として参戦した戦争は？",
+  "answer": "第一次世界大戦",
+  "explanation": "日本は日英同盟を理由に参戦し、中国にあるドイツの根拠地などを占領した。戦争はヨーロッパを中心に世界へ広がった"
+ },
+ {
+  "id": "soc-091",
+  "subject": "social",
+  "question": "1918年、米の値上がりへの抗議から全国に広がった暴動は？",
+  "answer": "米騒動",
+  "explanation": "富山県の漁村の女性たちの行動から始まり、各地に広がった。この後、原敬による本格的な政党内閣が成立した"
+ },
+ {
+  "id": "soc-092",
+  "subject": "social",
+  "question": "1918年に本格的な政党内閣を組織し、「平民宰相」と呼ばれた人物は？",
+  "answer": "原敬",
+  "explanation": "立憲政友会の総裁。爵位をもたない衆議院議員出身の首相だったため「平民宰相」と呼ばれた"
+ },
+ {
+  "id": "soc-093",
+  "subject": "social",
+  "question": "1925年に成立し、25歳以上のすべての男子に選挙権を与えた法律は？",
+  "answer": "普通選挙法",
+  "explanation": "納税額による制限がなくなり、有権者の数が大きく増えた。同じ年には治安維持法も制定されている"
+ },
+ {
+  "id": "soc-094",
+  "subject": "social",
+  "question": "1931年、関東軍が満州で軍事行動を広げ、満州支配のきっかけとなった事件は？",
+  "answer": "満州事変",
+  "explanation": "柳条湖での鉄道爆破をきっかけに始まり、関東軍が満州全域を占領した。翌年には満州国がつくられた"
+ },
+ {
+  "id": "soc-095",
+  "subject": "social",
+  "question": "満州事変をめぐる対立から、1933年に日本が脱退した国際機関は？",
+  "answer": "国際連盟",
+  "explanation": "国際連盟が日本軍の撤兵を求めたため、日本は脱退を通告した。これ以後、日本は国際的に孤立を深めていった"
+ },
+ {
+  "id": "soc-096",
+  "subject": "social",
+  "question": "1937年、北京郊外の盧溝橋事件をきっかけに始まった、日本と中国の全面戦争は？",
+  "answer": "日中戦争",
+  "explanation": "戦線は中国の広い範囲に拡大し、戦争は長期化した。国内でも国家総動員法が出されるなど、戦時体制が強まった"
+ },
+ {
+  "id": "soc-097",
+  "subject": "social",
+  "question": "1941年12月、日本軍の真珠湾攻撃をきっかけに始まった、アメリカ・イギリスなどとの戦争は？",
+  "answer": "太平洋戦争",
+  "explanation": "戦場は東南アジアや太平洋の島々へ広がった。1945年、日本がポツダム宣言を受け入れて終わった"
+ },
+ {
+  "id": "soc-098",
+  "subject": "social",
+  "question": "1945年8月、アメリカによって広島と長崎に投下された爆弾は？",
+  "answer": "原子爆弾",
+  "explanation": "8月6日に広島、9日に長崎へ投下され、多くの命が失われた。原爆とも呼ばれ、核兵器の恐ろしさを示した"
+ },
+ {
+  "id": "soc-099",
+  "subject": "social",
+  "question": "1951年に結ばれ、日本が独立を回復するきっかけとなった平和条約は？",
+  "answer": "サンフランシスコ平和条約",
+  "explanation": "アメリカなど48か国と結んだ条約。翌1952年の発効により占領が終わり、日本は独立国に戻った"
+ },
+ {
+  "id": "soc-100",
+  "subject": "social",
+  "question": "1956年、日本の加盟が認められた国際機関は？",
+  "answer": "国際連合",
+  "explanation": "日ソ共同宣言でソ連との国交が回復した後、加盟が実現した。戦後の国際社会への復帰を示す出来事で、「もはや戦後ではない」と言われた年でもある"
+ },
+ {
+  "id": "eng-121",
+  "subject": "english",
+  "question": "library",
+  "answer": "図書館",
+  "explanation": "I study in the library.（私は図書館で勉強します）本を借りたり読んだりする場所。liberty（自由）とつづりが似ているので注意"
+ },
+ {
+  "id": "eng-122",
+  "subject": "english",
+  "question": "hospital",
+  "answer": "病院",
+  "explanation": "He is in the hospital.（彼は入院しています）病気やけがの人を治療する場所。アメリカ英語ではin the hospital、イギリス英語ではin hospitalと表すことが多い"
+ },
+ {
+  "id": "eng-123",
+  "subject": "english",
+  "question": "station",
+  "answer": "駅",
+  "explanation": "The station is near my house.（駅は私の家の近くにあります）電車やバスが発着する場所"
+ },
+ {
+  "id": "eng-124",
+  "subject": "english",
+  "question": "park",
+  "answer": "公園",
+  "explanation": "We play soccer in the park.（私たちは公園でサッカーをします）遊んだり散歩したりする場所"
+ },
+ {
+  "id": "eng-125",
+  "subject": "english",
+  "question": "store",
+  "answer": "店",
+  "explanation": "This store is open on Sundays.（この店は日曜日に開いています）品物を売る店全般を指す。イギリスでは shop もよく使う"
+ },
+ {
+  "id": "eng-126",
+  "subject": "english",
+  "question": "train",
+  "answer": "電車・列車",
+  "explanation": "I go to school by train.（私は電車で学校へ行きます）by train＝電車で（by のあとは乗り物を無冠詞で使う）"
+ },
+ {
+  "id": "eng-127",
+  "subject": "english",
+  "question": "bus",
+  "answer": "バス",
+  "explanation": "The bus comes at eight.（バスは8時に来ます）複数形は buses"
+ },
+ {
+  "id": "eng-128",
+  "subject": "english",
+  "question": "car",
+  "answer": "車・自動車",
+  "explanation": "My father drives a car.（私の父は車を運転します）drive＝運転する"
+ },
+ {
+  "id": "eng-129",
+  "subject": "english",
+  "question": "bicycle",
+  "answer": "自転車",
+  "explanation": "I ride a bicycle to school.（私は自転車で学校へ行きます）短く bike ともいう。ride＝（自転車などに）乗る"
+ },
+ {
+  "id": "eng-130",
+  "subject": "english",
+  "question": "airplane",
+  "answer": "飛行機",
+  "explanation": "The airplane is very big.（その飛行機はとても大きいです）短く plane ともいう"
+ },
+ {
+  "id": "eng-131",
+  "subject": "english",
+  "question": "clock",
+  "answer": "時計（置き時計・掛け時計）",
+  "explanation": "The clock is on the wall.（時計は壁にかかっています）壁や机の上の時計。身につける時計は watch"
+ },
+ {
+  "id": "eng-132",
+  "subject": "english",
+  "question": "watch",
+  "answer": "腕時計",
+  "explanation": "I have a new watch.（私は新しい腕時計を持っています）腕につける時計のこと。動詞では「見る」という意味もある"
+ },
+ {
+  "id": "eng-133",
+  "subject": "english",
+  "question": "television",
+  "answer": "テレビ",
+  "explanation": "I watch television every day.（私は毎日テレビを見ます）短く TV と書くことも多い"
+ },
+ {
+  "id": "eng-134",
+  "subject": "english",
+  "question": "computer",
+  "answer": "コンピューター",
+  "explanation": "I use a computer at school.（私は学校でコンピューターを使います）情報を処理する電子機器。パソコンもcomputerの一種"
+ },
+ {
+  "id": "eng-135",
+  "subject": "english",
+  "question": "phone",
+  "answer": "電話",
+  "explanation": "My phone is on the desk.（私の電話は机の上にあります）telephone の短い形。スマートフォンも phone という"
+ },
+ {
+  "id": "eng-136",
+  "subject": "english",
+  "question": "kitchen",
+  "answer": "台所・キッチン",
+  "explanation": "My mother is in the kitchen.（私の母は台所にいます）料理をする場所"
+ },
+ {
+  "id": "eng-137",
+  "subject": "english",
+  "question": "garden",
+  "answer": "庭",
+  "explanation": "There are many flowers in the garden.（庭にはたくさんの花があります）花や野菜を育てる場所"
+ },
+ {
+  "id": "eng-138",
+  "subject": "english",
+  "question": "homework",
+  "answer": "宿題",
+  "explanation": "I have a lot of homework today.（今日は宿題がたくさんあります）homework は数えられない名詞。「宿題が1つ」は a piece of homework のように数える"
+ },
+ {
+  "id": "eng-139",
+  "subject": "english",
+  "question": "music",
+  "answer": "音楽",
+  "explanation": "I listen to music every day.（私は毎日音楽を聞きます）musicは基本的に数えられない名詞。通常a musicとは言わない"
+ },
+ {
+  "id": "eng-140",
+  "subject": "english",
+  "question": "movie",
+  "answer": "映画",
+  "explanation": "This movie is interesting.（この映画はおもしろいです）movieはアメリカ英語でよく使われる『映画』という意味の単語。イギリス英語ではfilmもよく使う"
+ },
+ {
+  "id": "soc-101",
+  "subject": "social",
+  "question": "国土面積が世界で最も大きい国は？",
+  "answer": "ロシア",
+  "explanation": "ヨーロッパからアジアまで広がる世界最大の国土をもつ国。首都はモスクワ"
+ },
+ {
+  "id": "soc-102",
+  "subject": "social",
+  "question": "人口が世界で最も多い国は？（2023年に中国を上回った）",
+  "answer": "インド",
+  "explanation": "2023年に中国を上回って世界1位になった（国連の推計）。首都はニューデリー。根拠は下記「統計の根拠」に記録"
+ },
+ {
+  "id": "soc-103",
+  "subject": "social",
+  "question": "アフリカ大陸北部に広がる、世界最大の暑い砂漠は？",
+  "answer": "サハラ砂漠",
+  "explanation": "アフリカ北部に広がる世界最大の暑い砂漠。ラクダによる交易で知られる"
+ },
+ {
+  "id": "soc-104",
+  "subject": "social",
+  "question": "エジプトを流れ地中海に注ぐ、世界最長の川は？",
+  "answer": "ナイル川",
+  "explanation": "一般に世界最長の川とされ、長さは約6,650km。流域では古代エジプト文明が栄えた"
+ },
+ {
+  "id": "soc-105",
+  "subject": "social",
+  "question": "南アメリカ大陸を流れ、流域面積が世界最大の川は？",
+  "answer": "アマゾン川",
+  "explanation": "流域には世界最大の熱帯雨林（セルバ）が広がる。ブラジルを流れて大西洋に注ぐ"
+ },
+ {
+  "id": "soc-106",
+  "subject": "social",
+  "question": "世界最高峰のエベレストがある、アジア南部の山脈は？",
+  "answer": "ヒマラヤ山脈",
+  "explanation": "ネパールと中国の国境付近にエベレスト（標高約8,849m）がそびえる、世界で最も高い山脈"
+ },
+ {
+  "id": "soc-107",
+  "subject": "social",
+  "question": "ペルーやチリなど、南アメリカ大陸の西岸を南北に連なる山脈は？",
+  "answer": "アンデス山脈",
+  "explanation": "長さ約7,500kmに及ぶ大山脈。高地ではジャガイモの栽培やリャマの飼育が行われる"
+ },
+ {
+  "id": "soc-108",
+  "subject": "social",
+  "question": "中国を流れ、東シナ海に注ぐアジア最長の川は？",
+  "answer": "長江",
+  "explanation": "長さ約6,300km。流域は米作が盛んで、中国の経済の中心地帯になっている。黄河とともに中国文明発祥の地"
+ },
+ {
+  "id": "soc-109",
+  "subject": "social",
+  "question": "アメリカ合衆国の首都は？",
+  "answer": "ワシントン",
+  "explanation": "ポトマック川沿いの特別区（コロンビア特別区）にある。ニューヨークと間違えやすいので注意"
+ },
+ {
+  "id": "soc-110",
+  "subject": "social",
+  "question": "オーストラリアの首都は？",
+  "answer": "キャンベラ",
+  "explanation": "最大の都市はシドニーだが、首都は計画都市キャンベラ。シドニーとメルボルンの間で妥協してつくられた"
+ },
+ {
+  "id": "soc-111",
+  "subject": "social",
+  "question": "EU（ヨーロッパ連合）の主要機関が多く置かれている、ベルギーの首都は？",
+  "answer": "ブリュッセル",
+  "explanation": "EUの主要機関が多く集まる都市で、『ヨーロッパの首都』とも呼ばれる"
+ },
+ {
+  "id": "soc-112",
+  "subject": "social",
+  "question": "デンマークの自治領で、世界最大の島は？",
+  "answer": "グリーンランド",
+  "explanation": "大部分が氷におおわれた島。大陸であるオーストラリアを除いて世界最大の島とされる"
+ },
+ {
+  "id": "soc-113",
+  "subject": "social",
+  "question": "世界で最も広い海洋は？",
+  "answer": "太平洋",
+  "explanation": "地球の表面積の約3分の1を占める最大の海洋。日本もこの海洋に面している"
+ },
+ {
+  "id": "soc-114",
+  "subject": "social",
+  "question": "赤道付近など、年間を通して気温が高い地域に見られる気候帯は？",
+  "answer": "熱帯",
+  "explanation": "年間を通して気温が高い。雨の降り方によって熱帯雨林気候やサバナ気候などに分けられる"
+ },
+ {
+  "id": "soc-115",
+  "subject": "social",
+  "question": "ヨーロッパの地中海沿岸などで見られる、夏に乾燥し冬に雨が多い気候は？",
+  "answer": "地中海性気候",
+  "explanation": "夏の乾燥に強いオリーブやぶどう（ワイン用）の栽培が盛ん"
+ },
+ {
+  "id": "soc-116",
+  "subject": "social",
+  "question": "アジア南部や東部で、季節によって向きが変わる風を何という？",
+  "answer": "モンスーン",
+  "explanation": "季節風のこと。夏は海から湿った風、冬は大陸から乾いた風が吹き、稲作に大きな影響を与える"
+ },
+ {
+  "id": "soc-117",
+  "subject": "social",
+  "question": "砂漠の中で、水が得られ、人が住んだり作物を作ったりできる場所は？",
+  "answer": "オアシス",
+  "explanation": "地下水がわき出る場所のまわりに集落ができ、ナツメヤシなどが栽培される"
+ },
+ {
+  "id": "soc-118",
+  "subject": "social",
+  "question": "カナダ北部などの北極圏に暮らし、伝統的に狩猟や漁労をしてきた先住民族は？",
+  "answer": "イヌイット",
+  "explanation": "カナダ北部などの北極圏に暮らす先住民族。伝統的にアザラシなどを獲る狩猟や漁労を行ってきた"
+ },
+ {
+  "id": "soc-119",
+  "subject": "social",
+  "question": "アフリカ大陸の最南端に位置する国は？",
+  "answer": "南アフリカ共和国",
+  "explanation": "金やダイヤモンドなどの鉱産資源が豊富。かつてアパルトヘイト（人種隔離政策）が行われていた"
+ },
+ {
+  "id": "soc-120",
+  "subject": "social",
+  "question": "ヨーロッパとアジアの境界とされる、ロシアにある山脈は？",
+  "answer": "ウラル山脈",
+  "explanation": "この山脈より西がヨーロッパ、東がアジアとされることが多い。鉄鉱石などの資源が豊富"
+ },
+ {
+  "id": "eng-141",
+  "subject": "english",
+  "question": "always",
+  "answer": "いつも",
+  "explanation": "I always get up at six.（私はいつも6時に起きます）頻度100％の目安。一般動詞のあとではなく前、be動詞のあとに置く"
+ },
+ {
+  "id": "eng-142",
+  "subject": "english",
+  "question": "usually",
+  "answer": "たいてい・ふつう",
+  "explanation": "I usually walk to school.（私はたいてい歩いて学校へ行きます）always の次くらいに頻度が高いときの目安"
+ },
+ {
+  "id": "eng-143",
+  "subject": "english",
+  "question": "often",
+  "answer": "よく・しばしば",
+  "explanation": "I often play tennis on Sundays.（私は日曜日によくテニスをします）文の終わりに置くこともある。発音は『オーフン』のようにtを発音しない場合と、『オフトゥン』のように発音する場合がある"
+ },
+ {
+  "id": "eng-144",
+  "subject": "english",
+  "question": "sometimes",
+  "answer": "ときどき",
+  "explanation": "I sometimes read books at night.（私は夜ときどき本を読みます）頻度は半分くらいの目安。文頭に置くこともできる"
+ },
+ {
+  "id": "eng-145",
+  "subject": "english",
+  "question": "never",
+  "answer": "決して〜ない",
+  "explanation": "I never drink coffee.（私は決してコーヒーを飲みません）頻度0％。never 自体に否定の意味があるので、not はつけず、文は肯定の形になる"
+ },
+ {
+  "id": "eng-146",
+  "subject": "english",
+  "question": "very",
+  "answer": "とても",
+  "explanation": "This book is very interesting.（この本はとてもおもしろいです）形容詞や副詞を強める言葉"
+ },
+ {
+  "id": "eng-147",
+  "subject": "english",
+  "question": "really",
+  "answer": "本当に",
+  "explanation": "I really like soccer.（私は本当にサッカーが好きです）「本当に〜だ」と気持ちを強めて言うときに使う"
+ },
+ {
+  "id": "eng-148",
+  "subject": "english",
+  "question": "now",
+  "answer": "今",
+  "explanation": "I am busy now.（私は今忙しいです）『今・現在』を表す副詞。文末などに置いて、現在の状態や動作を表す"
+ },
+ {
+  "id": "eng-149",
+  "subject": "english",
+  "question": "today",
+  "answer": "今日",
+  "explanation": "It is cold today.（今日は寒いです）名詞として「今日」とも、副詞として文末に置くこともできる"
+ },
+ {
+  "id": "eng-150",
+  "subject": "english",
+  "question": "yesterday",
+  "answer": "昨日",
+  "explanation": "I saw him yesterday.（私は昨日彼に会いました）過去の文と一緒に使う"
+ },
+ {
+  "id": "eng-151",
+  "subject": "english",
+  "question": "tomorrow",
+  "answer": "明日",
+  "explanation": "I will play soccer tomorrow.（私は明日サッカーをするつもりです）未来の文と一緒に使う"
+ },
+ {
+  "id": "eng-152",
+  "subject": "english",
+  "question": "here",
+  "answer": "ここに・ここへ",
+  "explanation": "Come here, please.（ここへ来てください）話している人のいる場所を指す"
+ },
+ {
+  "id": "eng-153",
+  "subject": "english",
+  "question": "there",
+  "answer": "そこに・あそこに",
+  "explanation": "I want to go there.（私はそこへ行きたいです）here（ここ）と反対に、離れた場所を指す"
+ },
+ {
+  "id": "eng-154",
+  "subject": "english",
+  "question": "in",
+  "answer": "〜の中に",
+  "explanation": "I live in Japan.（私は日本に住んでいます）国や町などの広い場所、月（in May）にも使う。中にあるイメージ"
+ },
+ {
+  "id": "eng-155",
+  "subject": "english",
+  "question": "on",
+  "answer": "〜の上に",
+  "explanation": "The book is on the desk.（その本は机の上にあります）くっついている表面に使う。日付や曜日（on Sunday）にも使う"
+ },
+ {
+  "id": "eng-156",
+  "subject": "english",
+  "question": "at",
+  "answer": "〜で・〜に（一点）",
+  "explanation": "I get up at seven.（私は7時に起きます）時刻や、駅・学校など特定の場所・地点を表すときに使う"
+ },
+ {
+  "id": "eng-157",
+  "subject": "english",
+  "question": "under",
+  "answer": "〜の下に",
+  "explanation": "The cat is under the table.（猫はテーブルの下にいます）on（上）と反対の言葉"
+ },
+ {
+  "id": "eng-158",
+  "subject": "english",
+  "question": "behind",
+  "answer": "〜のうしろに・〜の後ろに",
+  "explanation": "He is behind the door.（彼はドアのうしろにいます）反対は in front of（〜の前に）"
+ },
+ {
+  "id": "eng-159",
+  "subject": "english",
+  "question": "between",
+  "answer": "〜の間に",
+  "explanation": "I sit between Tom and Ken.（私はトムとケンの間に座ります）2つのものの間。between A and B の形で使う"
+ },
+ {
+  "id": "eng-160",
+  "subject": "english",
+  "question": "about",
+  "answer": "〜について",
+  "explanation": "I read a book about soccer.（私はサッカーについての本を読みました）「〜について」のほかに、about five（約5）のように「およそ」の意味もある"
+ },
+ {
+  "id": "soc-121",
+  "subject": "social",
+  "question": "株式を発行して多くの人から資金を集め、その資金で経営される会社を何という？",
+  "answer": "株式会社",
+  "explanation": "株式を買った人は株主となり、会社の利益の一部を配当として受け取ることがある。日本の会社の多くがこの形"
+ },
+ {
+  "id": "soc-122",
+  "subject": "social",
+  "question": "企業同士の公正な競争を守るため、独占や不当な取引を禁止した法律は？",
+  "answer": "独占禁止法",
+  "explanation": "一つの企業が市場を独占すると価格が上がりやすくなるため、公正取引委員会がこの法律をもとに取り締まる"
+ },
+ {
+  "id": "soc-123",
+  "subject": "social",
+  "question": "紙幣（日本銀行券）を発行し、日本の金融の中心となっている中央銀行は？",
+  "answer": "日本銀行",
+  "explanation": "「銀行の銀行」「政府の銀行」とも呼ばれる。物価の安定を目的に金融政策を行う"
+ },
+ {
+  "id": "soc-124",
+  "subject": "social",
+  "question": "国や地方公共団体が、税金を集めて公共サービスなどに使う経済活動を何という？",
+  "answer": "財政",
+  "explanation": "道路や学校、警察など、個人や企業では担いにくい分野にお金を使う。歳入と歳出の計画が予算"
+ },
+ {
+  "id": "soc-125",
+  "subject": "social",
+  "question": "所得が多い人ほど高い税率で税金を負担する仕組みを何という？",
+  "answer": "累進課税",
+  "explanation": "所得税などに使われる仕組み。収入の差による負担の不公平を小さくするねらいがある"
+ },
+ {
+  "id": "soc-126",
+  "subject": "social",
+  "question": "商品を買ったりサービスを受けたりするときに、代金に上乗せして負担する税金は？",
+  "answer": "消費税",
+  "explanation": "買い物のたびに負担する間接税の代表例。店などがまとめて国に納める"
+ },
+ {
+  "id": "soc-127",
+  "subject": "social",
+  "question": "経済全体の動きの良し悪しを表す言葉で、「好況」「不況」とも言われるものは？",
+  "answer": "景気",
+  "explanation": "景気が良いと企業の生産や人々の消費が活発になり、悪いと失業が増えやすくなる"
+ },
+ {
+  "id": "soc-128",
+  "subject": "social",
+  "question": "1ドル＝100円から1ドル＝90円のように、外国通貨に対して円の価値が上がることを何という？",
+  "answer": "円高",
+  "explanation": "円高になると輸入品が安くなる一方、日本の輸出品は外国で割高になる。反対は円安"
+ },
+ {
+  "id": "soc-129",
+  "subject": "social",
+  "question": "一国内で、一定期間に新しく生み出されたモノやサービスの価値の合計を何という？",
+  "answer": "国内総生産（GDP）",
+  "explanation": "国の経済規模を表す代表的な指標。Gross Domestic Product の略"
+ },
+ {
+  "id": "soc-130",
+  "subject": "social",
+  "question": "物価が継続して上がり続け、お金の価値が下がっていく現象は？",
+  "answer": "インフレーション",
+  "explanation": "略してインフレともいう。反対に物価が下がり続ける現象はデフレーション（デフレ）"
+ },
+ {
+  "id": "soc-131",
+  "subject": "social",
+  "question": "病気や失業、老後などに備え、年金・医療・介護や生活保護などで国民の生活を支える仕組み全体を何という？",
+  "answer": "社会保障",
+  "explanation": "社会保険・公的扶助・社会福祉・公衆衛生の4つから成り立つ。日本国憲法第25条の生存権がもとになっている"
+ },
+ {
+  "id": "soc-132",
+  "subject": "social",
+  "question": "出生率が低下して子どもの数が減り、高齢者の割合が増えていく社会の変化を何という？",
+  "answer": "少子高齢化",
+  "explanation": "年金や医療などの社会保障の負担のあり方が課題になっている"
+ },
+ {
+  "id": "soc-133",
+  "subject": "social",
+  "question": "団結権・団体交渉権・団体行動権の3つを合わせて何という？",
+  "answer": "労働基本権（労働三権）",
+  "explanation": "労働者が使用者と対等な立場で交渉できるようにするための権利。日本国憲法第28条で保障されている"
+ },
+ {
+  "id": "soc-134",
+  "subject": "social",
+  "question": "訪問販売などで契約した場合に、一定期間内なら無条件で契約を解除できる制度は？",
+  "answer": "クーリング・オフ制度",
+  "explanation": "消費者が冷静に考え直すための制度。書面などで通知することで解約できる"
+ },
+ {
+  "id": "soc-135",
+  "subject": "social",
+  "question": "国家と国家との間で結ばれる、法的な効力をもつ約束を何という？",
+  "answer": "条約",
+  "explanation": "国会の承認を得て締結される。国と国の関係を決める基本的なルールになる"
+ },
+ {
+  "id": "soc-136",
+  "subject": "social",
+  "question": "国連が紛争地域に軍人や文民を派遣し、停戦の監視などを行う活動を、アルファベット3文字で何という？",
+  "answer": "PKO（国連平和維持活動）",
+  "explanation": "Peacekeeping Operations の略。日本も自衛隊を派遣して協力してきた"
+ },
+ {
+  "id": "soc-137",
+  "subject": "social",
+  "question": "政府から独立して、国際協力や環境保護などの活動を行う民間の団体を何という？",
+  "answer": "NGO（非政府組織）",
+  "explanation": "Non-Governmental Organization の略。災害支援や開発支援などで活躍する"
+ },
+ {
+  "id": "soc-138",
+  "subject": "social",
+  "question": "先進国の政府が、発展途上国の開発を助けるために行う資金や技術の協力を何という？",
+  "answer": "政府開発援助（ODA）",
+  "explanation": "Official Development Assistance の略。円借款や無償の資金協力、技術協力などがある"
+ },
+ {
+  "id": "soc-139",
+  "subject": "social",
+  "question": "人・モノ・お金・情報が国境を越えて移動し、世界の一体化が進むことを何という？",
+  "answer": "グローバル化",
+  "explanation": "企業の海外進出や文化の交流が進む一方、環境問題など世界全体で取り組む課題も増えている"
+ },
+ {
+  "id": "soc-140",
+  "subject": "social",
+  "question": "2030年までの達成を目指して国連で定められた、貧困や環境など17分野の国際目標を何という？",
+  "answer": "SDGs（持続可能な開発目標）",
+  "explanation": "Sustainable Development Goals の略。「誰一人取り残さない」を理念に掲げている"
  }
 ]
