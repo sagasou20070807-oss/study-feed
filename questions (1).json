@@ -1,0 +1,1542 @@
+[
+ {
+  "answer": "走る",
+  "explanation": "I run to school every morning.（私は毎朝、学校へ走って行きます）「走る」と言えばまずこの単語。",
+  "id": "eng-001",
+  "question": "run",
+  "subject": "english"
+ },
+ {
+  "answer": "泳ぐ",
+  "explanation": "She can swim very fast.（彼女はとても速く泳げます）水の中の動き専用の単語。",
+  "id": "eng-002",
+  "question": "swim",
+  "subject": "english"
+ },
+ {
+  "answer": "歌う",
+  "explanation": "We sing a song together.（私たちは一緒に歌を歌います）song（歌）とセットで覚える。",
+  "id": "eng-003",
+  "question": "sing",
+  "subject": "english"
+ },
+ {
+  "answer": "読む",
+  "explanation": "He reads a book at night.（彼は夜に本を読みます）発音は「リード」。過去形も同じ read だが発音は「レッド」。",
+  "id": "eng-004",
+  "question": "read",
+  "subject": "english"
+ },
+ {
+  "answer": "書く",
+  "explanation": "I write a letter to my friend.（私は友達に手紙を書きます）w は発音しない（「ライト」と読む）。",
+  "id": "eng-005",
+  "question": "write",
+  "subject": "english"
+ },
+ {
+  "answer": "話す",
+  "explanation": "Can you speak English?（英語を話せますか）言語を話すときの代表選手。",
+  "id": "eng-006",
+  "question": "speak",
+  "subject": "english"
+ },
+ {
+  "answer": "（注意して）聞く",
+  "explanation": "Listen to the teacher.（先生の話を聞きなさい）耳を向けて聞くこと。to と一緒に使う。",
+  "id": "eng-007",
+  "question": "listen",
+  "subject": "english"
+ },
+ {
+  "answer": "（注意して）見る",
+  "explanation": "We watch TV after dinner.（私たちは夕食後にテレビを見ます）動くものをじっと見ること。",
+  "id": "eng-008",
+  "question": "watch",
+  "subject": "english"
+ },
+ {
+  "answer": "勉強する",
+  "explanation": "I study math every day.（私は毎日数学を勉強します）「勉強」は study。仕事の「働く」は work。",
+  "id": "eng-009",
+  "question": "study",
+  "subject": "english"
+ },
+ {
+  "answer": "教える",
+  "explanation": "Mr. Tanaka teaches English.（田中先生は英語を教えます）teacher（先生）の元になる単語。",
+  "id": "eng-010",
+  "question": "teach",
+  "subject": "english"
+ },
+ {
+  "answer": "料理する",
+  "explanation": "My mother cooks dinner.（母は夕食を作ります）食べ物を作るときは cook、物を作るときは make。",
+  "id": "eng-011",
+  "question": "cook",
+  "subject": "english"
+ },
+ {
+  "answer": "歩く",
+  "explanation": "They walk to the park.（彼らは公園まで歩きます）乗り物でなく自分の足で行くこと。",
+  "id": "eng-012",
+  "question": "walk",
+  "subject": "english"
+ },
+ {
+  "answer": "手伝う・助ける",
+  "explanation": "Please help me.（手伝ってください）困っている人を助ける場面で使う。",
+  "id": "eng-013",
+  "question": "help",
+  "subject": "english"
+ },
+ {
+  "answer": "使う",
+  "explanation": "I use a pen every day.（私は毎日ペンを使います）道具を使うときの単語。",
+  "id": "eng-014",
+  "question": "use",
+  "subject": "english"
+ },
+ {
+  "answer": "作る",
+  "explanation": "She makes a cake.（彼女はケーキを作ります）材料から物を作ること。",
+  "id": "eng-015",
+  "question": "make",
+  "subject": "english"
+ },
+ {
+  "answer": "食べる",
+  "explanation": "We eat lunch at school.（私たちは学校で昼食を食べます）食事の基本の単語。",
+  "id": "eng-016",
+  "question": "eat",
+  "subject": "english"
+ },
+ {
+  "answer": "飲む",
+  "explanation": "He drinks water after soccer.（彼はサッカーの後に水を飲みます）液体専用の「飲む」。",
+  "id": "eng-017",
+  "question": "drink",
+  "subject": "english"
+ },
+ {
+  "answer": "眠る",
+  "explanation": "The baby sleeps well.（赤ちゃんはよく眠ります）go to bed（寝に行く）とは場面が違う。",
+  "id": "eng-018",
+  "question": "sleep",
+  "subject": "english"
+ },
+ {
+  "answer": "来る",
+  "explanation": "Come here, please.（こちらに来てください）話している人の方へ近づく動き。",
+  "id": "eng-019",
+  "question": "come",
+  "subject": "english"
+ },
+ {
+  "answer": "行く",
+  "explanation": "Let's go to the library.（図書館へ行こう）come（来る）と反対向きの動き。",
+  "id": "eng-020",
+  "question": "go",
+  "subject": "english"
+ },
+ {
+  "answer": "五箇条の御誓文",
+  "explanation": "明治天皇が神に誓う形で示した、新政府の基本方針。「広く会議を開いて政治を行う」ことなどが掲げられた。",
+  "id": "soc-001",
+  "question": "1868年、明治新政府が新しい政治の方針として示したものは？",
+  "subject": "social"
+ },
+ {
+  "answer": "東経135度",
+  "explanation": "東経135度の子午線は兵庫県明石市を通る。世界の基準は、イギリスのグリニッジを通る本初子午線（経度0度）。",
+  "id": "soc-002",
+  "question": "日本の標準時を決める経線（子午線）は、東経何度？",
+  "subject": "social"
+ },
+ {
+  "answer": "徳川家康",
+  "explanation": "1600年の関ヶ原の戦いに勝利し、1603年に征夷大将軍に任命されて江戸に幕府を開いた。",
+  "id": "soc-003",
+  "question": "1603年に江戸幕府を開いた人物は？",
+  "subject": "social"
+ },
+ {
+  "answer": "源頼朝",
+  "explanation": "平氏を滅ぼした後、守護・地頭を置いて武士の政権を築いた。鎌倉時代の始まりとされる。※近年は守護・地頭を置いた1185年を鎌倉幕府の成立とするのが一般的です。",
+  "id": "soc-004",
+  "question": "1192年に征夷大将軍となり、鎌倉幕府を開いた人物は？",
+  "subject": "social"
+ },
+ {
+  "answer": "十七条の憲法",
+  "explanation": "「和をもって貴しとなす（みんなで話し合い、仲良くすること）」で知られる。役人の守るべき道徳を示したもの。",
+  "id": "soc-005",
+  "question": "聖徳太子が定めた、役人の心構えを示した17条からなる決まりは？",
+  "subject": "social"
+ },
+ {
+  "answer": "東大寺",
+  "explanation": "聖武天皇が、仏教の力で災いから国を守ろうとして建てた。大仏は正式には盧舎那仏という。",
+  "id": "soc-006",
+  "question": "奈良の大仏がある寺は？",
+  "subject": "social"
+ },
+ {
+  "answer": "和同開珎",
+  "explanation": "奈良時代の初めに発行された銅のお金。『わどうかいちん（わどうかいほう）』と読む。なお、より古い貨幣に富本銭がある。税を米などではなく貨幣で納める仕組みづくりの一環だった。",
+  "id": "soc-007",
+  "question": "708年に作られた、日本で最初の本格的な流通貨幣は？",
+  "subject": "social"
+ },
+ {
+  "answer": "遣唐使",
+  "explanation": "阿倍仲麻呂や吉備真備などが参加した。894年、菅原道真の提案で廃止された。",
+  "id": "soc-008",
+  "question": "唐の進んだ文化や制度を学ぶため、日本から派遣された使節は？",
+  "subject": "social"
+ },
+ {
+  "answer": "大化の改新",
+  "explanation": "土地と人民を朝廷のものとする「公地公民」を掲げ、天皇中心の国づくりを目指した改革。",
+  "id": "soc-009",
+  "question": "645年、中大兄皇子と中臣鎌足が蘇我氏を倒して始めた政治改革は？",
+  "subject": "social"
+ },
+ {
+  "answer": "信濃川",
+  "explanation": "長さは367km。長野県では千曲川と呼ばれ、新潟県に入ると信濃川になる。流域面積も日本最大級。",
+  "id": "soc-010",
+  "question": "日本で最も長い川は？",
+  "subject": "social"
+ },
+ {
+  "answer": "琵琶湖",
+  "explanation": "滋賀県にある日本最大の湖。面積は約670平方キロメートルで、滋賀県の面積の約6分の1を占める。",
+  "id": "soc-011",
+  "question": "日本で最も面積が大きい湖は？",
+  "subject": "social"
+ },
+ {
+  "answer": "富士山",
+  "explanation": "標高は3776m。静岡県と山梨県の境にある。2013年に世界文化遺産に登録された。",
+  "id": "soc-012",
+  "question": "日本で最も標高が高い山は？",
+  "subject": "social"
+ },
+ {
+  "answer": "ペリー",
+  "explanation": "黒船と呼ばれる蒸気船の艦隊を率いて来航した。翌1854年に日米和親条約が結ばれた。",
+  "id": "soc-013",
+  "question": "1853年に浦賀へ来航し、日本に開国を求めたアメリカの使節は？",
+  "subject": "social"
+ },
+ {
+  "answer": "大日本帝国憲法",
+  "explanation": "明治憲法とも呼ばれる。天皇が国民に与える形の欽定憲法で、主権は天皇にあった。",
+  "id": "soc-014",
+  "question": "1889年に発布された、日本で最初の近代的な憲法は？",
+  "subject": "social"
+ },
+ {
+  "answer": "ポツダム宣言",
+  "explanation": "アメリカ・イギリス・中国が発表した、日本の降伏条件を示した宣言。1945年8月に日本が受諾した。",
+  "id": "soc-015",
+  "question": "1945年、日本が受け入れて第二次世界大戦の終結につながった宣言は？",
+  "subject": "social"
+ },
+ {
+  "answer": "踏み絵（絵踏み）",
+  "explanation": "キリスト教が禁止されていた江戸時代に、長崎などで行われた。像を踏めない人を信者とみなした。踏ませる板を『踏み絵』、その行為を『絵踏み』と区別する。",
+  "id": "soc-016",
+  "question": "江戸時代、キリスト教の信者かどうかを調べるため、キリスト像を踏ませた取り調べを何という？",
+  "subject": "social"
+ },
+ {
+  "answer": "札幌市",
+  "explanation": "北海道最大の都市で、人口は約197万人。1972年には冬季オリンピックが開かれた。",
+  "id": "soc-017",
+  "question": "北海道の道庁所在地は？",
+  "subject": "social"
+ },
+ {
+  "answer": "那覇市",
+  "explanation": "沖縄本島の南部にある県庁所在地。琉球王国の都だった首里は、現在は那覇市の一部。",
+  "id": "soc-018",
+  "question": "沖縄県の県庁所在地は？",
+  "subject": "social"
+ },
+ {
+  "answer": "東京都",
+  "explanation": "人口は約1,400万人で、日本の人口のおよそ9人に1人が住んでいる。最も少ないのは鳥取県。",
+  "id": "soc-019",
+  "question": "都道府県の中で、人口が最も多いのは？",
+  "subject": "social"
+ },
+ {
+  "answer": "択捉島",
+  "explanation": "北方領土の島の一つ。都道府県の範囲では北海道が最も北に位置する。",
+  "id": "soc-020",
+  "question": "日本の領土で、最も北にある島（日本最北端の島）は？",
+  "subject": "social"
+ },
+ {
+  "answer": "遊ぶ・（スポーツを）する",
+  "explanation": "I play soccer after school.（私は放課後サッカーをします）スポーツの前では「する」の意味になる。楽器のときは play the piano のように the が付く",
+  "id": "eng-021",
+  "question": "play",
+  "subject": "english"
+ },
+ {
+  "answer": "〜が好きである",
+  "explanation": "I like music.（私は音楽が好きです）「好き」の基本の単語。like to 〜 で「〜するのが好き」にもなる",
+  "id": "eng-022",
+  "question": "like",
+  "subject": "english"
+ },
+ {
+  "answer": "〜がほしい・〜したい",
+  "explanation": "I want a new bike.（私は新しい自転車がほしいです）want to 〜 で「〜したい」という意味になる",
+  "id": "eng-023",
+  "question": "want",
+  "subject": "english"
+ },
+ {
+  "answer": "持っている・飼っている",
+  "explanation": "I have a dog.（私は犬を飼っています）「持っている」が基本。家族やペットにも使う",
+  "id": "eng-024",
+  "question": "have",
+  "subject": "english"
+ },
+ {
+  "answer": "取る・（乗り物に）乗る",
+  "explanation": "I take the bus to school.（私はバスで学校へ行きます）乗り物に乗るときに使う。take a picture で「写真を撮る」",
+  "id": "eng-025",
+  "question": "take",
+  "subject": "english"
+ },
+ {
+  "answer": "手に入れる・もらう",
+  "explanation": "I get a present.（私はプレゼントをもらいます）「手に入れる」が基本。get up で「起きる」もよく出る",
+  "id": "eng-026",
+  "question": "get",
+  "subject": "english"
+ },
+ {
+  "answer": "見える・会う",
+  "explanation": "I see a bird in the sky.（空に鳥が見えます）自然に目に入るのが see。じっと見るのは watch（バッチ01）",
+  "id": "eng-027",
+  "question": "see",
+  "subject": "english"
+ },
+ {
+  "answer": "（目を向けて）見る",
+  "explanation": "Look at the picture.（その絵を見てください）目を向けて見ること。at と一緒に使う。listen と同じ形",
+  "id": "eng-028",
+  "question": "look",
+  "subject": "english"
+ },
+ {
+  "answer": "知っている",
+  "explanation": "I know his name.（私は彼の名前を知っています）k は発音しない（「ノウ」と読む）",
+  "id": "eng-029",
+  "question": "know",
+  "subject": "english"
+ },
+ {
+  "answer": "思う・考える",
+  "explanation": "I think so.（私はそう思います）「〜だと思う」と言うときの基本形",
+  "id": "eng-030",
+  "question": "think",
+  "subject": "english"
+ },
+ {
+  "answer": "買う",
+  "explanation": "I buy a notebook.（私はノートを買います）過去形は bought（ボート）で、形が大きく変わる",
+  "id": "eng-031",
+  "question": "buy",
+  "subject": "english"
+ },
+ {
+  "answer": "あげる・与える",
+  "explanation": "Please give me water.（水をください）give 人 もの の形でよく使う",
+  "id": "eng-032",
+  "question": "give",
+  "subject": "english"
+ },
+ {
+  "answer": "伝える・話す",
+  "explanation": "Tell me the truth.（本当のことを教えてください）tell 人 で「人に伝える」。speak（話す）とは使い方が違う",
+  "id": "eng-033",
+  "question": "tell",
+  "subject": "english"
+ },
+ {
+  "answer": "たずねる・頼む",
+  "explanation": "Ask the teacher.（先生に聞いてください）質問するときの単語。ask 人 で「人にたずねる」",
+  "id": "eng-034",
+  "question": "ask",
+  "subject": "english"
+ },
+ {
+  "answer": "答える",
+  "explanation": "Answer the question.（その質問に答えてください）名詞でも同じ answer（答え）を使う",
+  "id": "eng-035",
+  "question": "answer",
+  "subject": "english"
+ },
+ {
+  "answer": "開ける・開く",
+  "explanation": "Open the window, please.（窓を開けてください）close（閉める）と反対の動き",
+  "id": "eng-036",
+  "question": "open",
+  "subject": "english"
+ },
+ {
+  "answer": "閉める・閉じる",
+  "explanation": "Close the door, please.（ドアを閉めてください）open（開ける）と反対の動き",
+  "id": "eng-037",
+  "question": "close",
+  "subject": "english"
+ },
+ {
+  "answer": "始める・始まる",
+  "explanation": "The class begins at nine.（授業は9時に始まります）過去形は began（ビギャン）",
+  "id": "eng-038",
+  "question": "begin",
+  "subject": "english"
+ },
+ {
+  "answer": "終える・終わる",
+  "explanation": "I finish my homework.（私は宿題を終えます）begin（始まる）と反対の動き",
+  "id": "eng-039",
+  "question": "finish",
+  "subject": "english"
+ },
+ {
+  "answer": "待つ",
+  "explanation": "Wait a minute, please.（少し待ってください）wait for 〜 で「〜を待つ」になる",
+  "id": "eng-040",
+  "question": "wait",
+  "subject": "english"
+ },
+ {
+  "id": "eng-041",
+  "subject": "english",
+  "question": "live",
+  "answer": "住む・生きる",
+  "explanation": "I live in Tokyo.（私は東京に住んでいます）「住む」が基本。live in 〜 で「〜に住む」"
+ },
+ {
+  "id": "eng-042",
+  "subject": "english",
+  "question": "work",
+  "answer": "働く",
+  "explanation": "My father works at a bank.（私の父は銀行で働いています）study（勉強する）とペアで覚える"
+ },
+ {
+  "id": "eng-043",
+  "subject": "english",
+  "question": "learn",
+  "answer": "学ぶ・習う",
+  "explanation": "I learn English at school.（私は学校で英語を習います）studyは「勉強する」、learnは「学ぶ・習得する」という意味。studyは勉強する行為、learnは学んで知識や技能を身につけることに注目する"
+ },
+ {
+  "id": "eng-044",
+  "subject": "english",
+  "question": "call",
+  "answer": "電話する・呼ぶ",
+  "explanation": "Please call me tonight.（今夜私に電話してください）call 人で「人に電話する」。call 人 + 名前で「人を〜と呼ぶ」という意味にもなる"
+ },
+ {
+  "id": "eng-045",
+  "subject": "english",
+  "question": "meet",
+  "answer": "会う",
+  "explanation": "I meet my friends after school.（私は放課後、友達に会います）meetは「人と会う・初めて会う」。seeにも「会う」という意味があり、meetは人と会うことに焦点を当てる"
+ },
+ {
+  "id": "eng-046",
+  "subject": "english",
+  "question": "talk",
+  "answer": "話す",
+  "explanation": "Let's talk about the game.（その試合について話そう）talkは人と会話することに重点がある。speakは言語を話すことや、人前で話すことなどにも使われる"
+ },
+ {
+  "id": "eng-047",
+  "subject": "english",
+  "question": "find",
+  "answer": "見つける",
+  "explanation": "I found my key.（私は鍵を見つけました）findは「見つける」という意味。look forは「探す」という意味で、過去形はfound"
+ },
+ {
+  "id": "eng-048",
+  "subject": "english",
+  "question": "keep",
+  "answer": "保つ・続ける",
+  "explanation": "Keep the door open.（ドアを開けたままにしておいてください）keep 〜ing で「〜し続ける」"
+ },
+ {
+  "id": "eng-049",
+  "subject": "english",
+  "question": "try",
+  "answer": "試す・努力する",
+  "explanation": "Try this cake.（このケーキを食べてみてください）try to 〜 で「〜しようとする」"
+ },
+ {
+  "id": "eng-050",
+  "subject": "english",
+  "question": "stop",
+  "answer": "止める・やめる",
+  "explanation": "Stop the car here.（ここで車を止めてください）stop 〜ing で「〜するのをやめる」"
+ },
+ {
+  "id": "eng-051",
+  "subject": "english",
+  "question": "start",
+  "answer": "始める・始まる",
+  "explanation": "The game starts at three.（試合は3時に始まります）beginと同じく「始める・始まる」という意味。startは日常会話で特によく使われる"
+ },
+ {
+  "id": "eng-052",
+  "subject": "english",
+  "question": "visit",
+  "answer": "訪れる",
+  "explanation": "I visit my grandmother on Sundays.（私は日曜日には祖母を訪ねます）場所や人を訪ねるときの単語"
+ },
+ {
+  "id": "eng-053",
+  "subject": "english",
+  "question": "show",
+  "answer": "見せる",
+  "explanation": "Show me your picture.（あなたの写真を見せてください）show 人 もの の形でよく使う"
+ },
+ {
+  "id": "eng-054",
+  "subject": "english",
+  "question": "need",
+  "answer": "必要とする",
+  "explanation": "I need a pen.（私はペンが必要です）want（ほしい）より「なくては困る」という感じ"
+ },
+ {
+  "id": "eng-055",
+  "subject": "english",
+  "question": "remember",
+  "answer": "覚えている",
+  "explanation": "I remember his name.（私は彼の名前を覚えています）forget（忘れる）と反対の意味を持つ単語"
+ },
+ {
+  "id": "eng-056",
+  "subject": "english",
+  "question": "forget",
+  "answer": "忘れる",
+  "explanation": "Don't forget your bag.（かばんを忘れないでください）remember（覚えている）と反対の意味を持つ単語。過去形は forgot"
+ },
+ {
+  "id": "eng-057",
+  "subject": "english",
+  "question": "carry",
+  "answer": "運ぶ",
+  "explanation": "She carries a heavy bag.（彼女は重いかばんを運びます）carryは「運ぶ・持ち運ぶ」という意味。手や腕などで何かを持ち運ぶ場合によく使う"
+ },
+ {
+  "id": "eng-058",
+  "subject": "english",
+  "question": "bring",
+  "answer": "持ってくる",
+  "explanation": "Bring your book tomorrow.（明日、本を持ってきてください）bringは話し手や基準となる場所の方へ「持ってくる」。takeはそこから別の場所へ「持っていく」という意味"
+ },
+ {
+  "id": "eng-059",
+  "subject": "english",
+  "question": "clean",
+  "answer": "掃除する・きれいにする",
+  "explanation": "I clean my room every Sunday.（私は毎週日曜日に部屋を掃除します）形容詞では「きれいな」という意味にもなる"
+ },
+ {
+  "id": "eng-060",
+  "subject": "english",
+  "question": "enjoy",
+  "answer": "楽しむ",
+  "explanation": "I enjoy playing soccer.（私はサッカーをするのを楽しんでいます）enjoy 〜ing の形でよく使う"
+ },
+ {
+  "id": "soc-021",
+  "subject": "social",
+  "question": "米の生産量が日本一の都道府県は？",
+  "answer": "新潟県",
+  "explanation": "コシヒカリで知られる米どころ。東北地方も米の生産が盛んで、秋田県や山形県も上位に入る"
+ },
+ {
+  "id": "soc-022",
+  "subject": "social",
+  "question": "りんごの生産量が日本一の都道府県は？",
+  "answer": "青森県",
+  "explanation": "青森県は日本最大のりんごの産地で、全国の生産量の約6割を占める。冷涼な気候がりんごの栽培に適している"
+ },
+ {
+  "id": "soc-023",
+  "subject": "social",
+  "question": "普通温州みかんの収穫量が日本一の都道府県は？",
+  "answer": "静岡県",
+  "explanation": "静岡県は温州みかんの産地として有名。和歌山県や愛媛県も代表的なみかんの産地である"
+ },
+ {
+  "id": "soc-024",
+  "subject": "social",
+  "question": "荒茶の生産量が日本一の都道府県は？",
+  "answer": "鹿児島県",
+  "explanation": "鹿児島県は温暖な気候を生かした茶の栽培が盛んで、現在は荒茶の生産量が全国1位。静岡県も伝統的な茶の産地として有名"
+ },
+ {
+  "id": "soc-025",
+  "subject": "social",
+  "question": "じゃがいもの生産量が日本一の都道府県は？",
+  "answer": "北海道",
+  "explanation": "日本のじゃがいもの約8割を北海道が作っている。冷涼な気候と広い畑が向いている"
+ },
+ {
+  "id": "soc-026",
+  "subject": "social",
+  "question": "さつまいもの生産量が日本一の都道府県は？",
+  "answer": "鹿児島県",
+  "explanation": "火山灰の多いシラス台地でも育つ作物。焼酎の原料としても知られる"
+ },
+ {
+  "id": "soc-027",
+  "subject": "social",
+  "question": "酪農が最も盛んな都道府県は？",
+  "answer": "北海道",
+  "explanation": "広い土地を利用した酪農が盛んで、生乳の生産量は全国の約6割を占める"
+ },
+ {
+  "id": "soc-028",
+  "subject": "social",
+  "question": "自動車工業の中心で、トヨタ自動車の本社がある工業地帯は？",
+  "answer": "中京工業地帯",
+  "explanation": "愛知県を中心とする工業地帯。自動車や航空機などの機械工業が盛ん"
+ },
+ {
+  "id": "soc-029",
+  "subject": "social",
+  "question": "東京湾の沿岸に広がり、東京都と神奈川県にまたがる工業地帯は？",
+  "answer": "京浜工業地帯",
+  "explanation": "印刷・出版や機械工業などが盛ん。首都圏の消費地に近いのが特徴"
+ },
+ {
+  "id": "soc-030",
+  "subject": "social",
+  "question": "北九州工業地域で最も盛んな工業は？",
+  "answer": "鉄鋼業",
+  "explanation": "八幡製鉄所を中心に発展した地域で、かつて四大工業地帯の一つに数えられた。近くにあった筑豊炭田の石炭や、中国からの鉄鉱石を利用して鉄鋼業が発展した"
+ },
+ {
+  "id": "soc-031",
+  "subject": "social",
+  "question": "瀬戸内工業地域で、石油コンビナートに関連して盛んな工業は？",
+  "answer": "石油化学工業",
+  "explanation": "瀬戸内海沿岸には石油コンビナートが形成され、石油を原料とする化学工業が発達している。造船業や鉄鋼業も盛ん"
+ },
+ {
+  "id": "soc-032",
+  "subject": "social",
+  "question": "日本海側の冬の気候の特徴は？",
+  "answer": "雪が多い",
+  "explanation": "北西の季節風が日本海で湿気を含み、山にぶつかって雪を降らせる。豪雪地帯が多い"
+ },
+ {
+  "id": "soc-033",
+  "subject": "social",
+  "question": "瀬戸内地方の気候の特徴は？",
+  "answer": "雨が少ない",
+  "explanation": "中国山地と四国山地に挟まれているため、季節風が山にさえぎられ、雨が降りにくい。年間を通して降水量が少ない"
+ },
+ {
+  "id": "soc-034",
+  "subject": "social",
+  "question": "梅雨がない都道府県は？",
+  "answer": "北海道",
+  "explanation": "梅雨前線が北海道まで北上する前に消えてしまうため。夏も冷涼で過ごしやすい"
+ },
+ {
+  "id": "soc-035",
+  "subject": "social",
+  "question": "沖縄県の気候を何という？",
+  "answer": "亜熱帯気候",
+  "explanation": "年間を通して温暖で、冬も比較的暖かい。さとうきびやパイナップルなどの栽培が盛ん"
+ },
+ {
+  "id": "soc-036",
+  "subject": "social",
+  "question": "日本で最も広い平野は？",
+  "answer": "関東平野",
+  "explanation": "東京都・埼玉県・千葉県など1都6県に広がる。人口が集中し、畑作や都市が広がる"
+ },
+ {
+  "id": "soc-037",
+  "subject": "social",
+  "question": "木曽三川とは、どの3つの川のこと？",
+  "answer": "木曽川・長良川・揖斐川",
+  "explanation": "濃尾平野を流れる3つの川。江戸時代から治水工事が行われ、水田が広がった"
+ },
+ {
+  "id": "soc-038",
+  "subject": "social",
+  "question": "日本アルプスを構成する3つの山脈は？",
+  "answer": "飛騨山脈・木曽山脈・赤石山脈",
+  "explanation": "飛騨山脈は北アルプス、木曽山脈は中央アルプス、赤石山脈は南アルプスとも呼ばれる"
+ },
+ {
+  "id": "soc-039",
+  "subject": "social",
+  "question": "東京から北九州まで、太平洋沿岸に工業地帯が帯状に連なる地域を何という？",
+  "answer": "太平洋ベルト",
+  "explanation": "京浜・中京・阪神・北九州などの工業地帯が連なり、日本の工業生産の中心になっている"
+ },
+ {
+  "id": "soc-040",
+  "subject": "social",
+  "question": "東北地方を構成する県の数は？",
+  "answer": "6県",
+  "explanation": "青森県・岩手県・宮城県・秋田県・山形県・福島県の6県。米作りが盛んな地方"
+ },
+ {
+  "id": "eng-061",
+  "subject": "english",
+  "question": "big",
+  "answer": "大きい",
+  "explanation": "This bag is big.（このかばんは大きいです）small（小さい）と反対の意味"
+ },
+ {
+  "id": "eng-062",
+  "subject": "english",
+  "question": "small",
+  "answer": "小さい",
+  "explanation": "I have a small dog.（私は小さい犬を飼っています）big（大きい）と反対の意味"
+ },
+ {
+  "id": "eng-063",
+  "subject": "english",
+  "question": "long",
+  "answer": "長い",
+  "explanation": "This river is very long.（この川はとても長いです）時間の長さにも使う（a long time＝長い時間）"
+ },
+ {
+  "id": "eng-064",
+  "subject": "english",
+  "question": "short",
+  "answer": "短い",
+  "explanation": "I have short hair.（私は髪が短いです）人の背が低いときにも使う（He is short.＝彼は背が低いです）"
+ },
+ {
+  "id": "eng-065",
+  "subject": "english",
+  "question": "tall",
+  "answer": "（背が）高い",
+  "explanation": "He is tall.（彼は背が高いです）人や建物の「下から上までの高さ」に使う"
+ },
+ {
+  "id": "eng-066",
+  "subject": "english",
+  "question": "high",
+  "answer": "高い",
+  "explanation": "The mountain is high.（その山は高いです）highは山や空など、位置・標高の高さを表す。tallは人や建物など、下から上への高さを表すときによく使う"
+ },
+ {
+  "id": "eng-067",
+  "subject": "english",
+  "question": "new",
+  "answer": "新しい",
+  "explanation": "I have a new bike.（私は新しい自転車を持っています）old（古い）と反対の意味"
+ },
+ {
+  "id": "eng-068",
+  "subject": "english",
+  "question": "old",
+  "answer": "古い・年を取った",
+  "explanation": "This house is old.（この家は古いです）人の年齢にも使う（He is old.＝彼は年を取っています）"
+ },
+ {
+  "id": "eng-069",
+  "subject": "english",
+  "question": "happy",
+  "answer": "うれしい・幸せな",
+  "explanation": "I am happy today.（私は今日うれしいです）sad（悲しい）と反対の意味"
+ },
+ {
+  "id": "eng-070",
+  "subject": "english",
+  "question": "sad",
+  "answer": "悲しい",
+  "explanation": "She is sad today.（彼女は今日悲しいです）happy（うれしい）と反対の意味"
+ },
+ {
+  "id": "eng-071",
+  "subject": "english",
+  "question": "easy",
+  "answer": "簡単な・易しい",
+  "explanation": "This question is easy.（この問題は簡単です）difficult（難しい）と反対の意味。hardも「難しい」という意味になる"
+ },
+ {
+  "id": "eng-072",
+  "subject": "english",
+  "question": "difficult",
+  "answer": "難しい",
+  "explanation": "English is difficult for me.（英語は私には難しいです）easy（簡単な）と反対の意味"
+ },
+ {
+  "id": "eng-073",
+  "subject": "english",
+  "question": "fast",
+  "answer": "速い",
+  "explanation": "He is a fast runner.（彼は走るのが速いです）「速く」という副詞の形も同じ fast（He runs fast.＝彼は速く走ります）"
+ },
+ {
+  "id": "eng-074",
+  "subject": "english",
+  "question": "slow",
+  "answer": "遅い",
+  "explanation": "The turtle is slow.（カメは遅いです）fast（速い）と反対の意味"
+ },
+ {
+  "id": "eng-075",
+  "subject": "english",
+  "question": "strong",
+  "answer": "強い",
+  "explanation": "He is strong.（彼は強いです）weak（弱い）と反対の意味。力だけでなく「丈夫な」という意味にもなる"
+ },
+ {
+  "id": "eng-076",
+  "subject": "english",
+  "question": "weak",
+  "answer": "弱い",
+  "explanation": "I am weak in math.（私は数学が苦手です）strong（強い）と反対の意味。「〜が苦手」という意味でも使う"
+ },
+ {
+  "id": "eng-077",
+  "subject": "english",
+  "question": "hot",
+  "answer": "熱い・暑い",
+  "explanation": "The soup is hot.（そのスープは熱いです）気温の暑さにも使う（It is hot today.＝今日は暑いです）"
+ },
+ {
+  "id": "eng-078",
+  "subject": "english",
+  "question": "cold",
+  "answer": "冷たい・寒い",
+  "explanation": "The water is cold.（その水は冷たいです）気温の寒さにも使う（It is cold today.＝今日は寒いです）"
+ },
+ {
+  "id": "eng-079",
+  "subject": "english",
+  "question": "warm",
+  "answer": "暖かい",
+  "explanation": "This room is warm.（この部屋は暖かいです）hotほど温度が高くなく、心地よく暖かいという意味で使うことが多い"
+ },
+ {
+  "id": "eng-080",
+  "subject": "english",
+  "question": "busy",
+  "answer": "忙しい",
+  "explanation": "I am busy today.（私は今日忙しいです）free（ひまな）と反対の意味"
+ },
+ {
+  "id": "soc-041",
+  "subject": "social",
+  "question": "日本国憲法が施行されたのは何年？",
+  "answer": "1947年（昭和22年）",
+  "explanation": "1946年に公布され、翌1947年5月3日に施行された。5月3日は憲法記念日になっている"
+ },
+ {
+  "id": "soc-042",
+  "subject": "social",
+  "question": "日本国憲法の三つの基本原則は？",
+  "answer": "国民主権・基本的人権の尊重・平和主義",
+  "explanation": "憲法の土台となる三つの考え方。「国民主権」「基本的人権の尊重」「平和主義」の三つをセットで覚える"
+ },
+ {
+  "id": "soc-043",
+  "subject": "social",
+  "question": "国の政治のあり方を最終的に決めるのは国民である、という原則を何という？",
+  "answer": "国民主権",
+  "explanation": "主権とは国の政治を決める最高の権力のこと。日本ではその主権が国民にあると憲法で定められている"
+ },
+ {
+  "id": "soc-044",
+  "subject": "social",
+  "question": "日本国憲法で、戦争の放棄と戦力の不保持を定めたのは第何条？",
+  "answer": "第9条",
+  "explanation": "日本国憲法第9条は「戦争の放棄」を定め、陸海空軍その他の戦力は保持しないとしている。平和主義の中心となる条文"
+ },
+ {
+  "id": "soc-045",
+  "subject": "social",
+  "question": "国会・内閣・裁判所の三つの機関が、互いに抑制し合いながら権力を分け合う仕組みを何という？",
+  "answer": "三権分立",
+  "explanation": "一つの機関に権力が集中するのを防ぐ仕組み。立法・行政・司法の三権がそれぞれ別の機関に分けられている"
+ },
+ {
+  "id": "soc-046",
+  "subject": "social",
+  "question": "法律をつくる国の機関は？",
+  "answer": "国会",
+  "explanation": "国会は国の唯一の立法機関と定められている。法律案は国会の議決を経て成立する"
+ },
+ {
+  "id": "soc-047",
+  "subject": "social",
+  "question": "国会は衆議院と何からなる？",
+  "answer": "参議院",
+  "explanation": "国会は衆議院と参議院の二院制。衆議院と参議院の両方の議決で法律が成立するのが原則"
+ },
+ {
+  "id": "soc-048",
+  "subject": "social",
+  "question": "衆議院議員の任期は？",
+  "answer": "4年",
+  "explanation": "衆議院は解散があるため、任期の4年を満了する前に選挙が行われることが多い"
+ },
+ {
+  "id": "soc-049",
+  "subject": "social",
+  "question": "参議院議員の任期は？",
+  "answer": "6年",
+  "explanation": "参議院に解散はなく、3年ごとに半数が改選される。任期は衆議院より長い"
+ },
+ {
+  "id": "soc-050",
+  "subject": "social",
+  "question": "予算の議決・条約の承認・内閣総理大臣の指名で、衆議院が参議院より強い権限をもつ仕組みは？",
+  "answer": "衆議院の優越",
+  "explanation": "予算・条約・内閣総理大臣の指名では、衆議院の議決が優先される場合がある"
+ },
+ {
+  "id": "soc-051",
+  "subject": "social",
+  "question": "内閣総理大臣は、国会によって誰の中から指名される？",
+  "answer": "国会議員",
+  "explanation": "内閣総理大臣は国会議員の中から国会が指名する。通常は与党の党首が選ばれることが多い"
+ },
+ {
+  "id": "soc-052",
+  "subject": "social",
+  "question": "法律を実際に執行し、国の政治を行う機関は？",
+  "answer": "内閣",
+  "explanation": "内閣は行政を担う機関。法律の執行や外交、予算案の作成などを行う。内閣総理大臣がその長である"
+ },
+ {
+  "id": "soc-053",
+  "subject": "social",
+  "question": "日本の裁判所の最高機関は？",
+  "answer": "最高裁判所",
+  "explanation": "裁判所は司法を担う機関で、最高裁判所がその頂点にある。法律が憲法に違反していないかを判断する権限ももつ"
+ },
+ {
+  "id": "soc-054",
+  "subject": "social",
+  "question": "法律が憲法に違反していないかを裁判所が判断する権限を何という？",
+  "answer": "違憲立法審査権",
+  "explanation": "法律や命令などが憲法に違反していないか、裁判所が判断する権限"
+ },
+ {
+  "id": "soc-055",
+  "subject": "social",
+  "question": "18歳以上の国民がもつ、選挙で投票する権利を何という？",
+  "answer": "選挙権",
+  "explanation": "選挙権は18歳以上の国民に与えられている。2016年の法改正で、選挙権年齢が20歳から18歳に引き下げられた"
+ },
+ {
+  "id": "soc-056",
+  "subject": "social",
+  "question": "日本国憲法が定める国民の三大義務は？",
+  "answer": "教育を受けさせる義務・勤労の義務・納税の義務",
+  "explanation": "保護者には子どもに普通教育を受けさせる義務がある。ほかに勤労の義務と納税の義務が定められている"
+ },
+ {
+  "id": "soc-057",
+  "subject": "social",
+  "question": "「健康で文化的な最低限度の生活を営む権利」を何という？",
+  "answer": "生存権",
+  "explanation": "日本国憲法第25条が定める権利。生活保護などの社会保障は、この生存権を実現するための制度である"
+ },
+ {
+  "id": "soc-058",
+  "subject": "social",
+  "question": "国民が重大な刑事事件の裁判に参加する制度を何という？",
+  "answer": "裁判員制度",
+  "explanation": "20歳以上の国民の中から選ばれた裁判員が、裁判官と一緒に刑事裁判の判決に参加する。2009年に始まった"
+ },
+ {
+  "id": "soc-059",
+  "subject": "social",
+  "question": "都道府県知事や市町村長は、誰の投票で選ばれる？",
+  "answer": "住民",
+  "explanation": "知事や市町村長は住民の直接選挙で選ばれる。地方自治の担い手はその地域の住民である"
+ },
+ {
+  "id": "soc-060",
+  "subject": "social",
+  "question": "都道府県や市町村のように、地域の行政を行う団体を何という？",
+  "answer": "地方公共団体",
+  "explanation": "都道府県と市町村の二つの層からなる。地方公共団体は住民の選挙で選ばれた首長と議会によって運営される"
+ },
+ {
+  "id": "eng-081",
+  "subject": "english",
+  "question": "school",
+  "answer": "学校",
+  "explanation": "I go to school every day.（私は毎日学校へ行きます）go to school＝学校へ行く"
+ },
+ {
+  "id": "eng-082",
+  "subject": "english",
+  "question": "teacher",
+  "answer": "先生",
+  "explanation": "Mr. Brown is my teacher.（ブラウン先生は私の先生です）教える人のこと"
+ },
+ {
+  "id": "eng-083",
+  "subject": "english",
+  "question": "student",
+  "answer": "生徒・学生",
+  "explanation": "She is a student.（彼女は生徒です）中学生・高校生・大学生、みんな student"
+ },
+ {
+  "id": "eng-084",
+  "subject": "english",
+  "question": "friend",
+  "answer": "友だち",
+  "explanation": "He is my best friend.（彼は私の親友です）best friend＝親友"
+ },
+ {
+  "id": "eng-085",
+  "subject": "english",
+  "question": "family",
+  "answer": "家族",
+  "explanation": "I have a big family.（私には大家族がいます）「家族みんな」という意味"
+ },
+ {
+  "id": "eng-086",
+  "subject": "english",
+  "question": "father",
+  "answer": "父・お父さん",
+  "explanation": "My father is a teacher.（私の父は先生です）「父」は「お父さん」の少しあらたまった言い方"
+ },
+ {
+  "id": "eng-087",
+  "subject": "english",
+  "question": "mother",
+  "answer": "母・お母さん",
+  "explanation": "My mother cooks dinner.（私の母は夕ごはんを作ります）「母」は「お母さん」の少しあらたまった言い方"
+ },
+ {
+  "id": "eng-088",
+  "subject": "english",
+  "question": "brother",
+  "answer": "兄・弟",
+  "explanation": "I have two brothers.（私には兄（弟）が2人います）兄と弟の区別は older brother（兄）／younger brother（弟）"
+ },
+ {
+  "id": "eng-089",
+  "subject": "english",
+  "question": "sister",
+  "answer": "姉・妹",
+  "explanation": "My sister is tall.（私の姉は背が高いです）姉と妹の区別は older sister（姉）／younger sister（妹）"
+ },
+ {
+  "id": "eng-090",
+  "subject": "english",
+  "question": "book",
+  "answer": "本",
+  "explanation": "This book is interesting.（この本はおもしろいです）interesting＝おもしろい"
+ },
+ {
+  "id": "eng-091",
+  "subject": "english",
+  "question": "pen",
+  "answer": "ペン",
+  "explanation": "I have a red pen.（私は赤いペンを持っています）色と組み合わせてよく使う"
+ },
+ {
+  "id": "eng-092",
+  "subject": "english",
+  "question": "desk",
+  "answer": "机（勉強机）",
+  "explanation": "My desk is in my room.（私の机は私の部屋にあります）勉強や仕事をするときの机。食事をするときのテーブル（table）とはちがう"
+ },
+ {
+  "id": "eng-093",
+  "subject": "english",
+  "question": "chair",
+  "answer": "いす",
+  "explanation": "Sit on the chair.（そのいすにすわってください）sit on〜＝〜にすわる"
+ },
+ {
+  "id": "eng-094",
+  "subject": "english",
+  "question": "bag",
+  "answer": "かばん",
+  "explanation": "This bag is heavy.（このかばんは重いです）heavy＝重い。反対の意味は light（軽い）"
+ },
+ {
+  "id": "eng-095",
+  "subject": "english",
+  "question": "door",
+  "answer": "ドア・戸",
+  "explanation": "Open the door, please.（ドアを開けてください）open は「開ける」という動詞。window の文では形容詞として使う"
+ },
+ {
+  "id": "eng-096",
+  "subject": "english",
+  "question": "window",
+  "answer": "窓",
+  "explanation": "The window is open.（窓が開いています）open はここでは「開いている」という形容詞。door の文では動詞として使った"
+ },
+ {
+  "id": "eng-097",
+  "subject": "english",
+  "question": "room",
+  "answer": "部屋",
+  "explanation": "My room is clean.（私の部屋はきれいです）house（家）の中のひとつの部屋"
+ },
+ {
+  "id": "eng-098",
+  "subject": "english",
+  "question": "house",
+  "answer": "家・家屋",
+  "explanation": "My house is near the station.（私の家は駅の近くにあります）建物としての家。room（部屋）とはちがう"
+ },
+ {
+  "id": "eng-099",
+  "subject": "english",
+  "question": "table",
+  "answer": "テーブル（食卓）",
+  "explanation": "Dinner is on the table.（夕ごはんはテーブルの上にあります）食事をするときのテーブル。勉強机は desk"
+ },
+ {
+  "id": "eng-100",
+  "subject": "english",
+  "question": "bed",
+  "answer": "ベッド",
+  "explanation": "I go to bed at ten.（私は10時に寝ます）go to bed＝寝る（ベッドに入る）"
+ },
+ {
+  "id": "eng-101",
+  "subject": "english",
+  "question": "apple",
+  "answer": "りんご",
+  "explanation": "I eat an apple every morning.（私は毎朝りんごを食べます）an apple＝りんご1個"
+ },
+ {
+  "id": "eng-102",
+  "subject": "english",
+  "question": "bread",
+  "answer": "パン",
+  "explanation": "I eat bread for breakfast.（私は朝ごはんにパンを食べます）bread は基本的に数えられない名詞。パン1斤は a loaf of bread と表す"
+ },
+ {
+  "id": "eng-103",
+  "subject": "english",
+  "question": "rice",
+  "answer": "米・ごはん",
+  "explanation": "We eat rice every day.（私たちは毎日ごはんを食べます）炊く前のお米も、炊いたごはんも rice"
+ },
+ {
+  "id": "eng-104",
+  "subject": "english",
+  "question": "milk",
+  "answer": "牛乳",
+  "explanation": "I drink milk every morning.（私は毎朝牛乳を飲みます）milk は牛乳。コーヒーに入れるのも milk"
+ },
+ {
+  "id": "eng-105",
+  "subject": "english",
+  "question": "water",
+  "answer": "水",
+  "explanation": "I drink a lot of water.（私は水をたくさん飲みます）動詞では「水をやる」の意味もあるが、ここでは名詞の「水」"
+ },
+ {
+  "id": "eng-106",
+  "subject": "english",
+  "question": "egg",
+  "answer": "卵",
+  "explanation": "I eat an egg for breakfast.（私は朝ごはんに卵を食べます）an egg＝卵1個"
+ },
+ {
+  "id": "eng-107",
+  "subject": "english",
+  "question": "meat",
+  "answer": "肉",
+  "explanation": "I like meat very much.（私は肉がとても好きです）牛肉・豚肉・鶏肉などの肉をまとめて meat という。魚は通常 fish として区別する"
+ },
+ {
+  "id": "eng-108",
+  "subject": "english",
+  "question": "fish",
+  "answer": "魚",
+  "explanation": "I eat fish on Friday.（私は金曜日に魚を食べます）魚は1匹でも複数でも基本的に fish。魚の種類を複数表す場合は fishes も使う。動詞では「釣りをする」という意味もある"
+ },
+ {
+  "id": "eng-109",
+  "subject": "english",
+  "question": "dog",
+  "answer": "犬",
+  "explanation": "My dog is very cute.（私の犬はとてもかわいいです）cute＝かわいい"
+ },
+ {
+  "id": "eng-110",
+  "subject": "english",
+  "question": "cat",
+  "answer": "猫",
+  "explanation": "The cat is sleeping.（その猫は寝ています）sleeping＝寝ている"
+ },
+ {
+  "id": "eng-111",
+  "subject": "english",
+  "question": "bird",
+  "answer": "鳥",
+  "explanation": "A bird is singing in the tree.（鳥が木の枝で鳴いています）sing＝歌う・鳴く。tree＝木"
+ },
+ {
+  "id": "eng-112",
+  "subject": "english",
+  "question": "flower",
+  "answer": "花",
+  "explanation": "This flower is beautiful.（この花はきれいです）beautiful＝きれいな"
+ },
+ {
+  "id": "eng-113",
+  "subject": "english",
+  "question": "tree",
+  "answer": "木",
+  "explanation": "There is a big tree in my garden.（私の庭には大きな木があります）生えている木が tree。木材は wood"
+ },
+ {
+  "id": "eng-114",
+  "subject": "english",
+  "question": "sun",
+  "answer": "太陽",
+  "explanation": "The sun is shining today.（今日は太陽が輝いています）shine＝輝く。the sun のように the をつけて言う"
+ },
+ {
+  "id": "eng-115",
+  "subject": "english",
+  "question": "moon",
+  "answer": "月",
+  "explanation": "The moon is beautiful tonight.（今夜は月がきれいです）月（天体）のこと。the moon のように the をつけて言う"
+ },
+ {
+  "id": "eng-116",
+  "subject": "english",
+  "question": "star",
+  "answer": "星",
+  "explanation": "I can see many stars tonight.（今夜はたくさんの星が見えます）stars＝星（複数形）"
+ },
+ {
+  "id": "eng-117",
+  "subject": "english",
+  "question": "sky",
+  "answer": "空",
+  "explanation": "The sky is blue today.（今日は空が青いです）blue＝青い"
+ },
+ {
+  "id": "eng-118",
+  "subject": "english",
+  "question": "sea",
+  "answer": "海",
+  "explanation": "I like the sea very much.（私は海がとても好きです）sea と ocean はどちらも「海」。ocean は広大な海洋、sea は比較的小さな海域を指すことが多い"
+ },
+ {
+  "id": "eng-119",
+  "subject": "english",
+  "question": "mountain",
+  "answer": "山",
+  "explanation": "Mt. Fuji is a famous mountain in Japan.（富士山は日本の有名な山です）famous＝有名な。mountain は山、hill は丘。hill は mountain より低くなだらかな地形を表すことが多い"
+ },
+ {
+  "id": "eng-120",
+  "subject": "english",
+  "question": "river",
+  "answer": "川",
+  "explanation": "There is a river near my house.（私の家の近くに川があります）near〜＝〜の近くに"
+ },
+ {
+  "id": "soc-061",
+  "subject": "social",
+  "question": "1274年と1281年の2度、日本に攻めてきたモンゴルの軍勢を何という？",
+  "answer": "元寇",
+  "explanation": "元（モンゴル）のフビライが日本へ攻めてきた。2度の来襲を文永の役（1274年）・弘安の役（1281年）という"
+ },
+ {
+  "id": "soc-062",
+  "subject": "social",
+  "question": "1334年、後醍醐天皇が始めた天皇中心の新しい政治は？",
+  "answer": "建武の新政",
+  "explanation": "鎌倉幕府を倒した後醍醐天皇が、天皇を中心とする政治を始めた。武士の不満から短期間で終わった"
+ },
+ {
+  "id": "soc-063",
+  "subject": "social",
+  "question": "京都に室町幕府を開いた人物は？",
+  "answer": "足利尊氏",
+  "explanation": "後醍醐天皇と対立し、京都に室町幕府を開いた。1338年に征夷大将軍になった"
+ },
+ {
+  "id": "soc-064",
+  "subject": "social",
+  "question": "1467年に始まり、約10年間続いた戦乱は？",
+  "answer": "応仁の乱",
+  "explanation": "将軍の後継ぎ争いをきっかけに、京都を中心に10年続いた戦乱。戦国時代の始まりとされる"
+ },
+ {
+  "id": "soc-065",
+  "subject": "social",
+  "question": "1560年、織田信長が今川義元を破った戦いは？",
+  "answer": "桶狭間の戦い",
+  "explanation": "少ない兵力で大軍の今川義元を破った戦い。信長が天下統一へ進むきっかけになった"
+ },
+ {
+  "id": "soc-066",
+  "subject": "social",
+  "question": "豊臣秀吉が全国の田畑の面積と収穫量を調べた政策は？",
+  "answer": "太閤検地",
+  "explanation": "全国の田畑の面積や収穫高を統一した基準で調べ、土地の耕作者を明確にして年貢を納める仕組みを整えた"
+ },
+ {
+  "id": "soc-067",
+  "subject": "social",
+  "question": "1588年、豊臣秀吉が農民から武器を取り上げた政策は？",
+  "answer": "刀狩",
+  "explanation": "農民の武器を取り上げ、一揆を防ぐねらいがあった。武士と農民の身分を分ける政策の一つ"
+ },
+ {
+  "id": "soc-068",
+  "subject": "social",
+  "question": "1600年、徳川家康が石田三成を破った戦いは？",
+  "answer": "関ヶ原の戦い",
+  "explanation": "東軍の徳川家康が西軍の石田三成を破り、家康が天下を握る決定打になった"
+ },
+ {
+  "id": "soc-069",
+  "subject": "social",
+  "question": "大名を江戸と領地に交互に住まわせた江戸幕府の制度は？",
+  "answer": "参勤交代",
+  "explanation": "1635年に制度化。大名の妻子を江戸に住まわせ、移動の費用も負担させて幕府への反抗を防いだ"
+ },
+ {
+  "id": "soc-070",
+  "subject": "social",
+  "question": "江戸幕府がキリスト教の禁止などを背景に、貿易や外国との交流を厳しく制限した政策は？",
+  "answer": "鎖国",
+  "explanation": "1639年にポルトガル船の来航を禁止し、鎖国が完成した。オランダ・中国とは長崎で貿易を続けた"
+ },
+ {
+  "id": "soc-071",
+  "subject": "social",
+  "question": "江戸時代、村の5戸を一組として連帯責任を負わせた制度は？",
+  "answer": "五人組",
+  "explanation": "村の住民を5戸ずつ組にし、年貢の納入やきまりを守る責任を連帯して負わせた"
+ },
+ {
+  "id": "soc-072",
+  "subject": "social",
+  "question": "17世紀後半、元禄年間に上方を中心に栄えた町人文化は？",
+  "answer": "元禄文化",
+  "explanation": "経済力をつけた町人が担い手。近松門左衛門の人形浄瑠璃や松尾芭蕉の俳句などが生まれた"
+ },
+ {
+  "id": "soc-073",
+  "subject": "social",
+  "question": "「奥の細道」を書いた俳人は？",
+  "answer": "松尾芭蕉",
+  "explanation": "東北・北陸を旅して詠んだ紀行文。俳句の世界を高めた人物として知られる"
+ },
+ {
+  "id": "soc-074",
+  "subject": "social",
+  "question": "19世紀前半、江戸を中心に栄えた町人文化は？",
+  "answer": "化政文化",
+  "explanation": "文化・文政年間に江戸で栄えた町人文化。浮世絵や川柳などが流行した"
+ },
+ {
+  "id": "soc-075",
+  "subject": "social",
+  "question": "浮世絵「富嶽三十六景」を描いた絵師は？",
+  "answer": "葛飾北斎",
+  "explanation": "富士山をさまざまな場所から描いた連作で知られる。化政文化を代表する浮世絵師の一人"
+ },
+ {
+  "id": "soc-076",
+  "subject": "social",
+  "question": "8代将軍徳川吉宗が行った政治改革は？",
+  "answer": "享保の改革",
+  "explanation": "幕府の財政を立て直すため、倹約や新田開発を進めた。目安箱を設置したことでも知られる"
+ },
+ {
+  "id": "soc-077",
+  "subject": "social",
+  "question": "10代将軍のころ、商業の振興を進めた老中は？",
+  "answer": "田沼意次",
+  "explanation": "株仲間を奨励するなど商業を活発にして幕府の収入を増やそうとした。贈収賄の批判も受けた"
+ },
+ {
+  "id": "soc-078",
+  "subject": "social",
+  "question": "松平定信が行った政治改革は？",
+  "answer": "寛政の改革",
+  "explanation": "倹約と風紀の引き締めを進めた。田沼意次の政策を改め、幕府の財政再建をめざした"
+ },
+ {
+  "id": "soc-079",
+  "subject": "social",
+  "question": "天保の改革を行った老中は？",
+  "answer": "水野忠邦",
+  "explanation": "株仲間の解散や倹約令などで改革を進めたが、反発が強く短期間で終わった"
+ },
+ {
+  "id": "soc-080",
+  "subject": "social",
+  "question": "1837年、大坂で飢饉への不満から反乱を起こした元与力は？",
+  "answer": "大塩平八郎",
+  "explanation": "天保の大飢饉のなか、大坂の元与力・大塩平八郎が貧しい人々を救うため反乱を起こした"
+ },
+ {
+  "id": "soc-081",
+  "subject": "social",
+  "question": "1871年、藩を廃止して県を置き、政府が任命する県令（知事）を置いた改革は？",
+  "answer": "廃藩置県",
+  "explanation": "版籍奉還（1869年）の後、全国の藩をなくして県に統一した。中央政府が直接治める中央集権化が進んだ"
+ },
+ {
+  "id": "soc-082",
+  "subject": "social",
+  "question": "1871年、岩倉具視を団長として欧米へ派遣された使節団は？",
+  "answer": "岩倉使節団",
+  "explanation": "政府の要人が約2年かけて欧米各国を回った。不平等条約の改正は進まなかったが、各国の制度や産業を調査し、帰国後の改革に生かされた"
+ },
+ {
+  "id": "soc-083",
+  "subject": "social",
+  "question": "1873年、土地の所有者に地価の3％を現金で納めさせることにした税制改革は？",
+  "answer": "地租改正",
+  "explanation": "土地の所有者に地券を発行し、税を米ではなく現金で納める仕組みにした。政府の収入が安定した一方、負担への不満から農民の一揆も起きた"
+ },
+ {
+  "id": "soc-084",
+  "subject": "social",
+  "question": "民撰議院設立建白書を提出し、国会開設を求める自由民権運動を指導した人物は？",
+  "answer": "板垣退助",
+  "explanation": "土佐出身の政治家。1874年に建白書を出して運動を広げ、後に自由党を結成した。国会を開くことを求める声は全国に広がった"
+ },
+ {
+  "id": "soc-085",
+  "subject": "social",
+  "question": "1885年に内閣制度ができ、初代の内閣総理大臣となった人物は？",
+  "answer": "伊藤博文",
+  "explanation": "長州出身。内閣制度の創設とともに初代首相に就いた。大日本帝国憲法の制定でも中心的な役割を果たした"
+ },
+ {
+  "id": "soc-086",
+  "subject": "social",
+  "question": "1894年、朝鮮をめぐる対立から始まった、日本と清との戦争は？",
+  "answer": "日清戦争",
+  "explanation": "翌1895年の下関条約で、日本は遼東半島や台湾などを得た。清の弱さが明らかになり、列強の中国進出が進んだ"
+ },
+ {
+  "id": "soc-087",
+  "subject": "social",
+  "question": "日清戦争後、ロシア・フランス・ドイツが日本に遼東半島を清へ返すよう求めた出来事は？",
+  "answer": "三国干渉",
+  "explanation": "1895年、3国の圧力に日本は従わざるを得なかった。この屈辱が、ロシアへの対抗心を強めることになった"
+ },
+ {
+  "id": "soc-088",
+  "subject": "social",
+  "question": "1904年、満州と朝鮮をめぐって日本とロシアが戦った戦争は？",
+  "answer": "日露戦争",
+  "explanation": "1905年、アメリカの仲介によるポーツマス条約で講和した。賠償金が得られなかったため、国民の不満も招いた"
+ },
+ {
+  "id": "soc-089",
+  "subject": "social",
+  "question": "1910年、日本が韓国を併合し、植民地支配を始めた出来事は？",
+  "answer": "韓国併合",
+  "explanation": "朝鮮総督府が置かれ、土地調査や日本語教育などを通じた支配が行われた。独立を求める運動も続いた"
+ },
+ {
+  "id": "soc-090",
+  "subject": "social",
+  "question": "1914年にヨーロッパで始まり、日本も連合国側として参戦した戦争は？",
+  "answer": "第一次世界大戦",
+  "explanation": "日本は日英同盟を理由に参戦し、中国にあるドイツの根拠地などを占領した。戦争はヨーロッパを中心に世界へ広がった"
+ },
+ {
+  "id": "soc-091",
+  "subject": "social",
+  "question": "1918年、米の値上がりへの抗議から全国に広がった暴動は？",
+  "answer": "米騒動",
+  "explanation": "富山県の漁村の女性たちの行動から始まり、各地に広がった。この後、原敬による本格的な政党内閣が成立した"
+ },
+ {
+  "id": "soc-092",
+  "subject": "social",
+  "question": "1918年に本格的な政党内閣を組織し、「平民宰相」と呼ばれた人物は？",
+  "answer": "原敬",
+  "explanation": "立憲政友会の総裁。爵位をもたない衆議院議員出身の首相だったため「平民宰相」と呼ばれた"
+ },
+ {
+  "id": "soc-093",
+  "subject": "social",
+  "question": "1925年に成立し、25歳以上のすべての男子に選挙権を与えた法律は？",
+  "answer": "普通選挙法",
+  "explanation": "納税額による制限がなくなり、有権者の数が大きく増えた。同じ年には治安維持法も制定されている"
+ },
+ {
+  "id": "soc-094",
+  "subject": "social",
+  "question": "1931年、関東軍が満州で軍事行動を広げ、満州支配のきっかけとなった事件は？",
+  "answer": "満州事変",
+  "explanation": "柳条湖での鉄道爆破をきっかけに始まり、関東軍が満州全域を占領した。翌年には満州国がつくられた"
+ },
+ {
+  "id": "soc-095",
+  "subject": "social",
+  "question": "満州事変をめぐる対立から、1933年に日本が脱退した国際機関は？",
+  "answer": "国際連盟",
+  "explanation": "国際連盟が日本軍の撤兵を求めたため、日本は脱退を通告した。これ以後、日本は国際的に孤立を深めていった"
+ },
+ {
+  "id": "soc-096",
+  "subject": "social",
+  "question": "1937年、北京郊外の盧溝橋事件をきっかけに始まった、日本と中国の全面戦争は？",
+  "answer": "日中戦争",
+  "explanation": "戦線は中国の広い範囲に拡大し、戦争は長期化した。国内でも国家総動員法が出されるなど、戦時体制が強まった"
+ },
+ {
+  "id": "soc-097",
+  "subject": "social",
+  "question": "1941年12月、日本軍の真珠湾攻撃をきっかけに始まった、アメリカ・イギリスなどとの戦争は？",
+  "answer": "太平洋戦争",
+  "explanation": "戦場は東南アジアや太平洋の島々へ広がった。1945年、日本がポツダム宣言を受け入れて終わった"
+ },
+ {
+  "id": "soc-098",
+  "subject": "social",
+  "question": "1945年8月、アメリカによって広島と長崎に投下された爆弾は？",
+  "answer": "原子爆弾",
+  "explanation": "8月6日に広島、9日に長崎へ投下され、多くの命が失われた。原爆とも呼ばれ、核兵器の恐ろしさを示した"
+ },
+ {
+  "id": "soc-099",
+  "subject": "social",
+  "question": "1951年に結ばれ、日本が独立を回復するきっかけとなった平和条約は？",
+  "answer": "サンフランシスコ平和条約",
+  "explanation": "アメリカなど48か国と結んだ条約。翌1952年の発効により占領が終わり、日本は独立国に戻った"
+ },
+ {
+  "id": "soc-100",
+  "subject": "social",
+  "question": "1956年、日本の加盟が認められた国際機関は？",
+  "answer": "国際連合",
+  "explanation": "日ソ共同宣言でソ連との国交が回復した後、加盟が実現した。戦後の国際社会への復帰を示す出来事で、「もはや戦後ではない」と言われた年でもある"
+ }
+]
